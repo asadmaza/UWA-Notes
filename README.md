@@ -1,4 +1,4 @@
-# Read Me
+# README
 
 I shared my notes recently with a few people and they really liked my note taking style. Generated using AI, so please use it at your own risk. Commercial use is prohibited, please attribute or link my work to others, I hope you find it useful.
 
