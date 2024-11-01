@@ -329,13 +329,16 @@ SQL Basics
   - **Permissions**: Access rights can vary across tables and databases.
 #### SQL - Creating a Table: CREATE TABLE
 **CREATE TABLE** command:
+
 ```sql
 CREATE TABLE <DatabaseName>.<TableName> (
     <ColumnName> <DataType> <Modifiers>,
     PRIMARY KEY (<ColumnName>)
 );
 ```
+
 **CREATE TABLE** example:
+
 ```sql
 CREATE TABLE 12345678_db.TestTable (
     id int NOT NULL,
@@ -344,6 +347,7 @@ CREATE TABLE 12345678_db.TestTable (
     PRIMARY KEY (id)
 );
 ```
+
 #### SQL - MySQL Data Types
 - **DATE:** Stores dates in `YYYY-MM-DD`.
 - **TIME:** Stores times in `HH:MM:SS`.
@@ -353,9 +357,11 @@ CREATE TABLE 12345678_db.TestTable (
 - **BOOLEAN:** TRUE/FALSE stored as 0 or 1.
 - **INT:** Integer (whole number).
 - **FLOAT:** Floating point number.
+
 #### SQL - Other Data Types
 - Other data types include **JSON documents**, **binary strings**, and **blobs** (for storing images or spatial data).
 - Numeric formats like **TINYINT** handle specialized cases.
+
 ### SQL - Attribute (Field) Modifiers
 - **PRIMARY KEY:** Designates a column as unique identifier.
 - **AUTO_INCREMENT:** Automatically increases integer value for each row.
