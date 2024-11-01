@@ -6,7 +6,8 @@ Commercial use is prohibited 🚫, please attribute or link my work to others, I
 
 # Notes 🗒️:
 
-### [INMT5526 Business Intelligence Semester 2 2024](BI.md)
+### 1. [INMT5526 Business Intelligence Semester 2 2024](BI.md)
+### 2. [CITS5503 Cloud Computing Semester 2 2024](CC Exam.md)
 
 # Tips
 
