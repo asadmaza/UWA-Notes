@@ -1184,44 +1184,31 @@ Here's a condensed Markdown note format based on the images you've provided. The
   - **Example**: `/user/1` maps to `UserView(id=1)`.
   - **Implications if Misused**: Incorrect URL mappings can lead to errors or inaccessible pages.
 ### Code Example: `urls.py`
-{% raw %}
-```html
-from django.urls import path
-from music import views
 
-urlpatterns = [
-    path('', views.home, name='home'),  # Home page URL
-]
-```
-{% endraw %}
+![image](https://github.com/user-attachments/assets/a2a8ef75-85f8-43d8-9af7-7128416c76b6)
+
 
 ## View Component
 - **Function**: Uses resolved arguments to interact with templates and models.
 - **Implications if Misused**: Complex views can slow down response time.
 ### Code Example: `views.py`
-```python
-from django.shortcuts import render
 
-# View for rendering home page
-def home(request):
-    return render(request, 'home.html')
-```
+![image](https://github.com/user-attachments/assets/58357f35-54b4-4e73-bd3b-e96e6194b87c)
+
 ## Model Component
 - **Function**: Interacts with the database to retrieve and manage data.
 - **Implications if Misused**: Poorly designed models can lead to data redundancy or inefficiency.
 ### Code Example: `models.py`
-```python
-from django.db import models
 
-# Model for Artist with name and song fields
-class Artist(models.Model):
-    name = models.CharField(max_length=100)
-    song = models.CharField(max_length=25)
-```
+![image](https://github.com/user-attachments/assets/97c803e7-5612-46f2-a1db-1e1c2952ebf8)
+
+
 ## Template Component
 - **Function**: Renders data passed from the view into HTML or other formats.
 - **Implications if Misused**: Inefficient templates can increase load times.
+
 ### HTML Example
+
 ![image](https://github.com/user-attachments/assets/7f57d5cd-0417-4e4c-8c28-e97d1be893e8)
 
 
@@ -1349,32 +1336,17 @@ INSTALLED_APPS = [
   - Open `CITS5503/urls.py`.
   - Import views from the music app.
   - Add URL pattern for the home view.
-    {% raw %}
-    ```html
-    from django.urls import path
-    from music import views  # added
 
-    urlpatterns = [
-        path('', views.home, name='home'),  # Sets home page URL
-        path('admin/', admin.site.urls),
-    ]
-    ```
-    {% endraw %}
+    ![image](https://github.com/user-attachments/assets/a59fddd7-3881-4f54-8c36-cc9f0ec563b3)
     
   - **Implications if Misused**: Incorrect URL patterns will prevent users from accessing app views.
 ## Step 3: Update the View Component in the App
 - **Create Home View**:
   - Open `music/views.py`.
   - Define a simple view function to display a message.
-    {% raw %}
-    ```html
-    from django.shortcuts import render
-    from django.http import HttpResponse  # added
 
-    def home(request):
-        return HttpResponse('This is the home page.')  # Displays text on home page
-    ```
-    {% endraw %}
+    ![image](https://github.com/user-attachments/assets/f3f60d07-0ab2-49d9-8277-927c0e3bfd61)
+
     
   - **Implications if Misused**: Missing or incorrect views result in "page not found" errors.
 ## Step 4: Access the App
@@ -1397,14 +1369,9 @@ INSTALLED_APPS = [
      ```
    - **Implications if Misused**: Missing directories will prevent Django from finding templates.
 2. **Create HTML Files**:
-   {% raw %}
-   ```html
-   touch templates/home.html
-   touch music/templates/music/main.html
-   touch music/templates/music/artist.html
-   ```
-   {% endraw %}
-   
+
+    ![image](https://github.com/user-attachments/assets/dee1cb7e-3ee0-455c-a437-2ae2f8a838c8)
+
    - **Implications if Misused**: Missing HTML files result in rendering errors.
 ### Code Example for `templates/home.html`
 ![image](https://github.com/user-attachments/assets/8fe04193-1b75-4bf5-ade1-978b48f19ad0)
@@ -1431,18 +1398,9 @@ INSTALLED_APPS = [
 
 1. **Define View Functions**:
    - Inside `music/views.py`, define view functions to render templates.
-   ```python
-   from django.shortcuts import render
 
-   def home(request):
-       return render(request, 'home.html')  # Renders home page
+     ![image](https://github.com/user-attachments/assets/d2dccc4d-a4a0-4c24-ad2b-f730d7c29c21)
 
-   def main(request):
-       return render(request, 'music/main.html')  # Renders music main page
-
-   def artist(request):
-       return render(request, 'music/artist.html')  # Renders artist page
-   ```
    - **Implications if Misused**: Incorrect template names or paths will lead to template loading errors.
 ## Step 5: Register the Home Template in the Project
 1. **Configure Template Directory**:
@@ -1475,26 +1433,18 @@ INSTALLED_APPS = [
 ### Step 1: Add a Model in the App
 - **Location**: `music/models.py`
 - **Code**:
-  ```python
-  from django.db import models
-  
-  class Artist(models.Model):
-      name = models.CharField(max_length=200)  # artist name
-      song = models.CharField(max_length=200)  # artist song
-      
-      def __str__(self):
-          return self.name  # returns artist name in string representation
-  ```
+
+  ![image](https://github.com/user-attachments/assets/41580edc-1beb-4717-9526-c9c1cc0e02c0)
+
+
 - **Implication**: Defining models is essential as it provides the structure for database tables.
 ### Step 2: Create the Artist Table and Register it in the Admin Interface
 - **Location**: `music/admin.py`
 - **Code**:
-  ```python
-  from django.contrib import admin
-  from .models import Artist
-  
-  admin.site.register(Artist)  # registers the Artist model with the admin site
-  ```
+
+![image](https://github.com/user-attachments/assets/deb31228-3acd-4496-95cc-799e90c52c13)
+
+
 - **Implication**: Registering the model allows it to be managed in the Django admin interface.
 ### Step 3: Make and Apply Database Migrations
 - **Commands**:
@@ -1525,16 +1475,10 @@ INSTALLED_APPS = [
 ### Step 6: Update the View Component in the App
 - **Location**: `music/views.py`
 - **Code**:
-  ```python
-  from django.shortcuts import render
-  from .models import Artist
-  
-  def artist(request):
-      title = 'Artist Page Info'  # page title
-      artist_list = Artist.objects.all()  # retrieves all artist records
-      context = {'title': title, 'artist_list': artist_list}
-      return render(request, 'music/artist.html', context)  # sends data to template
-  ```
+
+![image](https://github.com/user-attachments/assets/17b066c6-db35-4db3-88af-723f341327fd)
+
+
 - **Explanation**: Retrieves all artist entries and passes them to the `artist.html` template.
 - **Implication**: Missing data retrieval or incorrect context keys will lead to display errors.
 ### Step 7: Update `music/templates/music/artist.html`
@@ -1552,21 +1496,14 @@ INSTALLED_APPS = [
 
 ### Question: What if 'title' in Context is Replaced by 'titlectx'?
 - **Original Code**:
-  ```python
-def artist(request):  
-  title = 'Artist Page Info'
-  artist_list = Artist.objects.all()
-  context = {'title': title, 'artist_list': artist_list}
-  return render(request, 'music/artist.html', context)
-  ```
+
+![image](https://github.com/user-attachments/assets/0a5a2187-f422-454b-9d4c-f3105bdb6838)
+
+
 - **Modified Code**:
-  ```python
-def artist(request):  
-  title = 'Artist Page Info'
-  artist_list = Artist.objects.all()
-  context = {'titlectx': title, 'artist_list': artist_list}
-  return render(request, 'music/artist.html', context)
-  ```
+
+![image](https://github.com/user-attachments/assets/f25e0bee-35c7-44a7-b7ff-e67f5d9fc5df)
+
 - **Template Change**:
 ![image](https://github.com/user-attachments/assets/26b71415-8d93-49ce-95fc-339de75e66e2)
 
