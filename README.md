@@ -11,4 +11,7 @@ You can export these as PDF through Obsidian, below is an example of what your n
 
 Feel free to reach out to me if you have any questions ⁉️. Goodluck with your studies 📖!
 
+
+[INMT5526 Business Intelligence Semester 2 2024](test%20file.md)
+
 *P.S. These notes are from units under the Master of Information Technology/Software Engineering/Business Analytics courses at the University of Western Australia.*
