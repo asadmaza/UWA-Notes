@@ -1219,11 +1219,10 @@ class Artist(models.Model):
 - **Function**: Renders data passed from the view into HTML or other formats.
 - **Implications if Misused**: Inefficient templates can increase load times.
 ### HTML Example
-{% raw %}
 ```html
 <h1>Main Page:</h1>
 <ul>
-    <li><a href="{% url 'home' %}">Home Page</a></li>
+    <li><a href="{% raw %}{% url 'home' %}{% endraw %}">Home Page</a></li>
 </ul>
 <p>MVT means:</p>
 <ul>
