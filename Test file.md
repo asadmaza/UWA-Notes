@@ -1,3 +1,9 @@
+---
+layout: default
+title: "Business Intelligence Notes"
+---
+
+
 # Introduction to Business Intelligence
 ## Business Intelligence Topic
 ### Business Intelligence - Definition
