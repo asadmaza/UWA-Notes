@@ -1406,16 +1406,9 @@ INSTALLED_APPS = [
 ## Step 2: Update the URL Component in the Project
 1. **Modify Main URL Configuration**:
    - Inside `CITS5503/urls.py`, add the URL pattern to include music app URLs.
-   ```python
-   from django.contrib import admin
-   from django.urls import path, include
-   from music import views
 
-   urlpatterns = [
-       path('', views.home, name='home'),
-       path('admin/', admin.site.urls),
-       path('music/', include('music.urls')),  # added
-   ]
+![image](https://github.com/user-attachments/assets/1707cd4f-305d-46b8-9c66-e4e8cbea382e)
+
    ```
    - **Implications if Misused**: Incorrect URL configuration can lead to "page not found" errors.
 ## Step 3: Create the URL Component in the App
