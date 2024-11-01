@@ -1,5 +1,5 @@
-title: "UWA Notes"
-description: "Page for Unit Material Notes"
+title: "Exam Notes for UWA units"
+description: "Unit Material Notes, I recommend importing into Obsidian markdown editor for better formating and exporting to PDF"
 theme: jekyll-theme-cayman
 markdown: kramdown
 highlighter: rouge  # Code highlighting with kramdown
