@@ -1392,14 +1392,8 @@ INSTALLED_APPS = [
    ```
    - **Implications if Misused**: Missing HTML files result in rendering errors.
 ### Code Example for `templates/home.html`
-```html
-<h1>Home Page:</h1>
-<ul>
-  <li><a href="{% url 'home' %}">Home Page</a></li>
-  <li><a href="{% url 'music:main' %}">Music Main Page</a></li>
-  <li><a href="{% url 'music:artist' %}">Artist Page</a></li>
-</ul>
-```
+![image](https://github.com/user-attachments/assets/8fe04193-1b75-4bf5-ade1-978b48f19ad0)
+
 
 ![Pasted image 20241029111249.png](Cloud%20Computing%20%20Exam%20Notes-media/86735e68702cc22c8be3378ec1d8e5b0d777a90b.png "wikilink")
 
@@ -1537,19 +1531,8 @@ INSTALLED_APPS = [
 - **Implication**: Missing data retrieval or incorrect context keys will lead to display errors.
 ### Step 7: Update `music/templates/music/artist.html`
 - **Code**:
-  ```html
-  <h1>{{title}}</h1>
-  <ul>
-      <li><a href="{% url 'home' %}">Home Page</a></li>
-      <li><a href="{% url 'music:main' %}">Music Main Page</a></li>
-  </ul>
-  
-  <ul>
-      {% for artist in artist_list %}
-          <li>{{artist.name}}: {{artist.song}}</li>
-      {% endfor %}
-  </ul>
-  ```
+![image](https://github.com/user-attachments/assets/0a77dc84-fadc-4bd4-bef4-14b466cf3c97)
+
 - **Explanation**: Loops over `artist_list` to display each artist's name and song.
 - **Implication**: Using incorrect variable names in the template will lead to undefined variable errors.
 ### Step 8: Restart the Server and Access the App
@@ -1577,21 +1560,8 @@ def artist(request):
   return render(request, 'music/artist.html', context)
   ```
 - **Template Change**:
-```html
-<h1>{{titlectx}}</h1>  <!-- updated to match context key -->
-<ul>  
-<li><a href="{% url 'home' %}">Home Page</a></li>  
-<li><a href="{% url 'music:main' %}">Music Main Page</a></li>  
-</ul>
+![image](https://github.com/user-attachments/assets/26b71415-8d93-49ce-95fc-339de75e66e2)
 
-<ul>
-
-  {% for artist in artist_list %}  
-  <li> {{artist.name}}: {{artist.song}}</li>
-
-  {% endfor %}  
-</ul> 
-```
 - **Implication**: Failure to match context keys between view and template results in missing data on the page.
 
 # Web App/Architecture/Django Assignment Question
