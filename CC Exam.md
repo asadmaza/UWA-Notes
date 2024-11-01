@@ -1185,7 +1185,7 @@ Here's a condensed Markdown note format based on the images you've provided. The
   - **Implications if Misused**: Incorrect URL mappings can lead to errors or inaccessible pages.
 ### Code Example: `urls.py`
 {% raw %}
-```python
+```html
 from django.urls import path
 from music import views
 
@@ -1277,7 +1277,7 @@ python manage.py runserver  # Starts server on default port 8000
   ```
   - **Example (nginx config)**:
   {% raw %}
-    ```nginx
+    ```html
     proxy_pass http://127.0.0.1:8000;
     ```
   {% endraw %}
@@ -1350,7 +1350,7 @@ INSTALLED_APPS = [
   - Import views from the music app.
   - Add URL pattern for the home view.
     {% raw %}
-    ```python
+    ```html
     from django.urls import path
     from music import views  # added
 
@@ -1367,7 +1367,7 @@ INSTALLED_APPS = [
   - Open `music/views.py`.
   - Define a simple view function to display a message.
     {% raw %}
-    ```python
+    ```html
     from django.shortcuts import render
     from django.http import HttpResponse  # added
 
@@ -1398,7 +1398,7 @@ INSTALLED_APPS = [
    - **Implications if Misused**: Missing directories will prevent Django from finding templates.
 2. **Create HTML Files**:
    {% raw %}
-   ```bash
+   ```html
    touch templates/home.html
    touch music/templates/music/main.html
    touch music/templates/music/artist.html
