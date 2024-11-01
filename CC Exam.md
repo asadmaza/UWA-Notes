@@ -14,6 +14,7 @@
 - **Goal**: Ensure information is accessible only to intended recipients.
 
 ![Pasted image 20241027163927.png](Cloud%20Computing%20%20Exam%20Notes-media/7123e0d37035c3fce7709a96dd85fe8f5ff21817.png "wikilink")
+
 ### Types of Ciphers
 - **Caesar Cipher**: Substitution cipher where each letter is shifted by a set number of positions.
   - **Example**: `HELLO` (shift by 3) becomes `KHOOR`.
@@ -21,6 +22,7 @@
 	- **Security flaw**: to brute force attack by enumeration (all possible rotations) – 25 meaningful shifts (26 letters)
   
 ![Pasted image 20241027164103.png](Cloud%20Computing%20%20Exam%20Notes-media/a7da9c86105635d6db8aa70432a293c4fcdeacb4.png "wikilink")
+
 ## Cryptography Today
 ### Symmetric Key Cryptography
 - **Definition**: The same key is used for both encryption and decryption.
@@ -30,7 +32,9 @@
 - **Examples**:
   - **DES** (insecure), **3DES** (insecure), **AES** (AES-128, AES-192, AES-256 - larger key space, impossible to enumerate key space).
 - **Applications**: Data encryption (files, network packets).
-![Pasted image 20241027164125.png](Cloud%20Computing%20%20Exam%20Notes-media/23c0d71f4e7ce95886871b676c3a04086895280c.png "wikilink")### Asymmetric Key Cryptography
+![Pasted image 20241027164125.png](Cloud%20Computing%20%20Exam%20Notes-media/23c0d71f4e7ce95886871b676c3a04086895280c.png "wikilink")
+
+### Asymmetric Key Cryptography
 - **Definition**: Uses a pair of distinct keys (public and private) for encryption and decryption.
 - **Process**:
   - **Public Key**: Used for encryption.
@@ -39,6 +43,7 @@
   - **ECC**, **RSA**
 - **Applications**: Remote authentication (e.g., SSH).
 ![Pasted image 20241027164447.png](Cloud%20Computing%20%20Exam%20Notes-media/654149996527b77ba91001eaf07d259240f1d744.png "wikilink")
+
 ## Hash Functions
 - **Definition**: Takes an input and transforms it into a fixed-size hash digest.
 - **Properties**:
@@ -46,15 +51,21 @@
   - Small input changes lead to significant hash changes.
 - **Examples**:
   - **MD5** (insecure), **SHA-1** (insecure), **SHA-256** (secure).
+
 ![Pasted image 20241027164538.png](Cloud%20Computing%20%20Exam%20Notes-media/6d02d73ac5392ece0c45ffc7af46eb8bf6758073.png "wikilink")
+
 #### SHA 256
 **Purpose:** Used to verify integrity of information provided.
+
 ![Pasted image 20241027165055.png](Cloud%20Computing%20%20Exam%20Notes-media/3378574a11f1dab4f47bb91321999cc114de6c32.png "wikilink")
+
 ### Hash Collisions
 - **Definition**: Two different inputs producing the same hash (hash digest).
 - **Cause**: Finite output possibilities but infinite input possibilities (Pigeonhole Principle).
 - **Examples**: Common with MD5 and SHA-1.
+
 ![Pasted image 20241027165405.png](Cloud%20Computing%20%20Exam%20Notes-media/367164dff2b41f839cb20989d55ec1af613ea3ce.png "wikilink")
+
 ### Pigeonhole Principle
 - **Analogy**: 10 pigeons but only 9 holes. If n items are put into m containers, with n > m, then at least one container must contain more than one item.
 - **Concept**: If more items (inputs) than containers (possible hash combinations) exist, at least one container holds multiple items.
@@ -75,6 +86,7 @@ Here's the continuation of the notes for the topic "IAM - Cryptography" in Markd
 - **Definition**: A web service that controls access to AWS resources securely.
 - **Purpose**: Manages authentication (who signs in) and authorization (permissions) for AWS resources.
 - **Root User**: Has complete access to all AWS resources in an account.
+
 ![Pasted image 20241027171312.png](Cloud%20Computing%20%20Exam%20Notes-media/2ad76e2480f6d00df1141e89875351e171c5d0b3.png "wikilink")
 
 ## IAM Identity Types
@@ -100,6 +112,7 @@ Here's the continuation of the notes for the topic "IAM - Cryptography" in Markd
 **1**: Different principals need to be authenticated by AWS before they can perform actions. Federated user: authenticated by external applications e.g. Gmail, Facebook, Single Sign On
 **2**: Authorization is implemented by policies, policies define permissions
 **3**: Principals can perform operations such as Stop, delete, create etc.
+
 ![Pasted image 20241027171751.png](Cloud%20Computing%20%20Exam%20Notes-media/eadbb56e43636ea111f872dc02db7085fefe00a5.png "wikilink")
 
 ## Main Features of IAM
@@ -127,7 +140,9 @@ Here's the continuation of the notes for the topic "IAM - Cryptography" in Markd
 - **Full-Access Managed Policy**: Grants  permissions for administors by granting full access to all services.
 - **Power-User Managed Policy**: Full access to services and resource without user/group management. i.e. subset of full-access managed policy.
 - **Partial-User Managed Policy**: Restricted to specific services or actions. i.e. subset of power-user managed policy
+
 ![Pasted image 20241027175057.png](Cloud%20Computing%20%20Exam%20Notes-media/fd0564334f60214913c893507fb4c0bdfe8464a2.png "wikilink")
+
 ## Administrator Access Policy Structure
 - **Version**: Specifies policy language version.
 - **Statement**: Defines the permission rule.
@@ -214,6 +229,7 @@ Here are the notes for the topic "IAM - Identity Access Management Continued" in
 - **Example Usage**:
   - Group policies like `account-admins-mfa` for Admins.
   - Role-based policies like `EC2-access` for limited resource access.
+
 ![Pasted image 20241027183031.png](Cloud%20Computing%20%20Exam%20Notes-media/57712a555f8e6974b6496a4bdc8bb016fd3a029a.png "wikilink")
 
 ## Inline Policy
@@ -223,7 +239,9 @@ Here are the notes for the topic "IAM - Identity Access Management Continued" in
 *Note*: Inline policies are deleted if the attached identity is deleted.
 **The `DynamoDB-books-app` policy is used by both roles. Is it shared?**
 No, because inline policy has one-to-one mapping. cannot have policy on more than one row in the diagram below.
+
 ![Pasted image 20241027183732.png](Cloud%20Computing%20%20Exam%20Notes-media/e07beb414c0a62dd9cbec1b93339ffe0696841fd.png "wikilink")
+
 ## Resource-Based (Inline) Policy
 - **Definition**: Specifies which principal has access to a resource and allowed actions.
 - **Example Use Case**: S3 bucket policies controlling who can `GetObject` from a bucket.
@@ -269,7 +287,9 @@ Here are the notes for the topic "IAM - Identity Access Management Continued" in
   - Identity-based policy allows `iam:CreateUser`.
   - Permissions boundary only allows `s3:*` and `ec2:*`.
   - **Effective Permission**: Alice cannot create users or manage S3/EC2 resources because there is no intersection between policies.
+  
  ![Pasted image 20241028011051.png](Cloud%20Computing%20%20Exam%20Notes-media/1622880a8c473fe5b77ede276507ada06b1cd7f6.png "wikilink")
+
 ## IAM - Practice Questions
 ### **Q1**: Name three keys in a policy and explain their role.
   - **Statement**: Represents a permission rule.
@@ -461,7 +481,9 @@ AWS IAM addresses several components of the X.800 standard:
   - 4 Layers: Application, Transport, Internet, Link
 - **TCP/IP Updated**:
   - 5 Layers: Application, Transport, Network, Data Link, Physical
+  
 ![Pasted image 20241029090644.png](Cloud%20Computing%20%20Exam%20Notes-media/aafb231545074637ecf958eb1afd39a5b6818c52.png "wikilink")
+
 - Question: **What is the difference between OSI and TCP/IP models?**
   - **OSI** has 7 layers with distinct Presentation and Session layers.
   - **TCP/IP Original** combines these into a single **Application layer**.
@@ -486,13 +508,16 @@ AWS IAM addresses several components of the X.800 standard:
 - **Encapsulation Process**:
   - Application data → Transport segment (TCP/UDP) → Network packet (IP) → Data Link frame (MAC) → Physical bits.
   - Each layer wraps data in a protocol-specific header before passing it to the next layer.
+  
 ![Pasted image 20241029090741.png](Cloud%20Computing%20%20Exam%20Notes-media/5313880f935ee1876dbf83ee8d139679a1e9fef6.png "wikilink")
 
 ## Encapsulation/Decapsulation in TCP/IP
 - **Encapsulation**: Adding headers at each layer to prepare data for transmission.
 - **Decapsulation**: Removing headers at each layer to interpret data at the receiving end.
 - **Explanation**: Data moves down the layers (encapsulation) at sender, transmitted as bits, then moves up (decapsulation) at receiver.
+
 ![Pasted image 20241029090825.png](Cloud%20Computing%20%20Exam%20Notes-media/dc2c4ebb28ea33d066f416d05ee7075374443937.png "wikilink")
+
 - Question: **Explain data encapsulation and decapsulation in TCP/IP**.
   - Encapsulation: Adds protocol-specific headers as data descends the layers.
   - Decapsulation: Removes headers as data ascends the layers at the receiver.
@@ -501,7 +526,9 @@ AWS IAM addresses several components of the X.800 standard:
 - ELB serves as the single point of contact for clients, distributing incoming requests across multiple target groups (e.g., EC2 instances, containers).
 - **Listener**: Checks incoming network requests using a pre-configured protocol and port.
 ### Diagram: ELB Architecture
+
 ![Pasted image 20241029090921.png](Cloud%20Computing%20%20Exam%20Notes-media/eaa7084540d3b1571a9923860ce9d2d2b21bfd77.png "wikilink")
+
 ### Example: Path-based routing
 - Rule 1: URL pattern `/public/home` routes requests to `PublicWebServer` target group.
   ```json
@@ -535,7 +562,9 @@ AWS IAM addresses several components of the X.800 standard:
 ### Scheme
 - **Internet-facing**: ALB has a public IP.
 - **Internal**: ALB has a private IP.
+
 ![Pasted image 20241029091020.png](Cloud%20Computing%20%20Exam%20Notes-media/870f8f42d9cfaeadcc7f1bd687fce270e93a3c96.png "wikilink")
+
 ## IP Address Type
 - **IPv4**: Commonly used in real-world.
   - **Issue**: Limited to 4.3 billion addresses (IPv4 exhaustion).
@@ -551,12 +580,15 @@ AWS IAM addresses several components of the X.800 standard:
     - `172.16.0.0` to `172.31.255.255` (CIDR: `172.16.0.0/12`)
     - `192.168.0.0` to `192.168.255.255` (CIDR: `192.168.0.0/16`)
 ### Diagram: How NAT Works
+
 ![Pasted image 20241029091148.png](Cloud%20Computing%20%20Exam%20Notes-media/f9b7111af183e1b5a77407240eccc2b0901b98ea.png "wikilink")
 
 ### Example: VPC Setup with NAT Gateway
 - **Public Subnet**: Hosts `Web Server EC2` with Elastic IP for internet access.
 - **Private Subnet**: Hosts `DB Server EC2` without direct internet access.
+
   ![Pasted image 20241029091225.png](Cloud%20Computing%20%20Exam%20Notes-media/b07c2e3cc9deb8ea943ce78921cd0fcc04b24c84.png "wikilink")
+
 ### Networking - Elastic Load Balancing Setup
 #### 1. **Set up an ALB (Application Load Balancer)**
 - **Steps to Setup**:
@@ -567,10 +599,13 @@ AWS IAM addresses several components of the X.800 standard:
       - **Internal**: Routes requests to private IPs within the same VPC.
     - **IP Address Type**:
       - **IPv4** or **Dualstack** (supports both IPv4 and IPv6).
+
     ![Pasted image 20241029091821.png](Cloud%20Computing%20%20Exam%20Notes-media/863198743b1a8f544ee6342174f35d89bf3d142f.png "wikilink")
+  
   - **Network Configuration**:
     - **VPC Selection**: Choose the VPC to route traffic within the specified subnets.
     - **Availability Zones**: Select at least two for high availability.
+
 ![Pasted image 20241029091916.png](Cloud%20Computing%20%20Exam%20Notes-media/7eea3f35dd535634cc758a6f08a4bbe12f81be85.png "wikilink")
 
 #### 2. **VPC (Virtual Private Cloud)**
@@ -591,8 +626,11 @@ AWS IAM addresses several components of the X.800 standard:
 - **Definition**: Acts as a firewall to control inbound and outbound traffic for the ALB.
 - **Configuration**:
   - Select an existing security group or create a new one during setup.
+  
     ![Pasted image 20241029092103.png](Cloud%20Computing%20%20Exam%20Notes-media/a89828cfea65f4d719301eb570dd3ca1cc8c6328.png "wikilink")
+    
     ![Pasted image 20241029092115.png](Cloud%20Computing%20%20Exam%20Notes-media/6b457ff069bee148fbed894346899547c545eae9.png "wikilink")
+
 #### 4. **Listeners and Routing**
 - **Listener**: Monitors requests from clients based on a configured **protocol** and **port**.
   - Supported protocols for ALB: **HTTP** and **HTTPS**.
@@ -600,20 +638,27 @@ AWS IAM addresses several components of the X.800 standard:
 - **Routing**: Can forward requests to specific **target groups** based on rules.
     - **Example**: 
     - HTTP request on port 80 directed to `CITS5503-lecture6-TG`.
+  
     ![Pasted image 20241029092134.png](Cloud%20Computing%20%20Exam%20Notes-media/6d1263190916e795b20451dd36dde9df78f52bdd.png "wikilink")
+  
 #### 5. **Create Target Group**
 - **Target Group**: Defines the destination for routed requests.
   - **Types**:
     - **Instances**: Targets specified by EC2 instance IDs.
     - **IP Addresses**: Targets specified by IP ranges, supports IPv6.
   - **Usage**: Used in conjunction with Auto Scaling for flexibility.
+  
     ![Pasted image 20241029092154.png](Cloud%20Computing%20%20Exam%20Notes-media/d01ed22948a7d2b4986f325d44f3ce75873f32a3.png "wikilink")
+  
     ![Pasted image 20241029092230.png](Cloud%20Computing%20%20Exam%20Notes-media/3f0d4ff4f02a65f85be5222e3b16cf0b2e5d6388.png "wikilink")
+  
 #### 6. **Register Targets**
 - **Registering**:
   - After creating a target group, add targets (e.g., EC2 instances) for load balancing.
   - **Health Checks**: Verifies if targets are healthy to receive traffic.
+  
     ![Pasted image 20241029092247.png](Cloud%20Computing%20%20Exam%20Notes-media/a1b462d8e385326ba56f6556e55504d326599b10.png "wikilink")
+
 ### Key Concepts Summary
 - **Elastic Load Balancing (ELB)**:
   - Increases application availability by distributing traffic across multiple targets.
@@ -678,7 +723,9 @@ AWS IAM addresses several components of the X.800 standard:
 - **Input Types for Model Training:** Text, images, speech, tabular data, 3D signals.
 - **Model Training:** Various algorithms like Support Vector Machine, Random Forest, Neural Networks.
 - **Model Adaptation:** Output can be applied to tasks like question answering, sentiment analysis, information extraction, image captioning, object recognition, instruction following.
+
   ![Pasted image 20241029093220.png](Cloud%20Computing%20%20Exam%20Notes-media/aa74c9998bd443b4ef60fc5be2ca0d36608466c7.png "wikilink")
+
 ### Types of Machine Learning
 1. **Supervised Learning (SL):**
    - Uses labeled data.
@@ -692,6 +739,7 @@ AWS IAM addresses several components of the X.800 standard:
    - Feedback-based approach, learning from environment via rewards or penalties.
    - Focuses on maximizing total reward over time.
    - Example: Training a game-playing AI that improves by maximizing points.
+
 ![Pasted image 20241029093301.png](Cloud%20Computing%20%20Exam%20Notes-media/a354f5d3f365a0570e2346ca2d3540c82db00327.png "wikilink")
 
 ### Neural Network Structure
@@ -700,6 +748,7 @@ AWS IAM addresses several components of the X.800 standard:
   - **Hidden Layers:** Perform calculations on data.
   - **Output Layer:** Produces the final result.
 - **Connections:** Each node in one layer connects to nodes in the next layer, weighted based on the importance of the input features.
+
   ![Pasted image 20241029093321.png](Cloud%20Computing%20%20Exam%20Notes-media/bb5f9dc8658d8a3807757b4be7107adcf6b501d7.png "wikilink")
 
 ### Perceptron (Single Node Neural Network)
@@ -721,6 +770,7 @@ $$
 - **Sigmoid:** Maps input between 0 and 1, commonly used for binary classification.
 - **Tanh (Hyperbolic Tangent):** Maps input between -1 and 1, providing better gradients for hidden layers.
 - **ReLU (Rectified Linear Unit):** Outputs zero for negative values and linear for positive values, preventing vanishing gradient problems in deep networks.
+
   ![Pasted image 20241029093809.png](Cloud%20Computing%20%20Exam%20Notes-media/a1eceee96d3df2f1ad1be61197b0a6eb5c452f2e.png "wikilink")
 
 # AI - Backpropagation and Performance Metrics
@@ -748,6 +798,7 @@ $$
 $$
 - **Training Goal**:
   - Minimize **Cost** to improve model accuracy.
+  
     ![Pasted image 20241029094103.png](Cloud%20Computing%20%20Exam%20Notes-media/bf49c827cd85e6195dbb760c02b138a95a8d1bc4.png "wikilink")
 
   - **Explanation**:
@@ -889,7 +940,9 @@ $$
   - **Purpose**: Captures long-range dependencies and relationships in sequences.
   - **Example**: Translates "How are you?" into Spanish as "¿Cómo estás?"
 #### Image: Transformer Architecture
-    ![Pasted image 20241029102037.png](Cloud%20Computing%20%20Exam%20Notes-media/257da8046247fc224c5ed9a2c17c57f0e37e696f.png "wikilink")
+
+![Pasted image 20241029102037.png](Cloud%20Computing%20%20Exam%20Notes-media/257da8046247fc224c5ed9a2c17c57f0e37e696f.png "wikilink")
+    
 #### Characteristics of LLMs
 - **Large**: Trained on extensive datasets with vast parameters.
 - **General Purpose**: Solves a wide range of problems.
@@ -927,7 +980,9 @@ $$
   - Model fails to capture patterns in data; performs poorly on training and test data.
   - Common causes: too few parameters, overly simplistic model, insufficient training.
   - **Implication**: Model cannot accurately predict outcomes, even on training data.
+  
     ![Pasted image 20241029102355.png](Cloud%20Computing%20%20Exam%20Notes-media/8f79318cd4347abbb628013f03337962467afdcd.png "wikilink")
+
 - **Insufficient Data Preprocessing**
   - Not cleaning, transforming, or handling missing values properly.
   - Failing to address outliers, scaling, or irrelevant features.
@@ -939,7 +994,9 @@ $$
   - Blindly trusting model predictions without further validation.
   - **Example**: Image classifier incorrectly identifies images due to context (e.g., snow in background labeled as "wolf").
   - **Implication**: Can lead to serious errors in critical applications.
+  
     ![Pasted image 20241029102450.png](Cloud%20Computing%20%20Exam%20Notes-media/6336cecce8627b8852f1dfc3d3f170ec5ca51a38.png "wikilink")
+
 ### Further Interest Topics
 - **Model Interpretability**
   - Efforts focus on explaining AI models that often act as "black boxes."
