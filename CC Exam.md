@@ -1219,6 +1219,7 @@ class Artist(models.Model):
 - **Function**: Renders data passed from the view into HTML or other formats.
 - **Implications if Misused**: Inefficient templates can increase load times.
 ### HTML Example
+{% raw %}
 ```html
 <h1>Main Page:</h1>
 <ul>
@@ -1231,6 +1232,9 @@ class Artist(models.Model):
     <li>Template</li>
 </ul>
 ```
+
+
+
 
 ![Pasted image 20241029110126.png](Cloud%20Computing%20%20Exam%20Notes-media/b9f41638e3ed8161ea3189225f3765c9a253f7ec.png "wikilink")
 
