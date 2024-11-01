@@ -274,9 +274,10 @@ No, because inline policy has one-to-one mapping. cannot have policy on more tha
 - **Definition**: Sets the maximum permissions an identity-based policy can grant.
 - **Example**: A permissions boundary attached to an IAM user named Alice.
 - **Effective Permissions**: Intersection between the identity-based policy and permissions boundary defines the actions a user can take.
-*Example JSON*:
-```json
 
+*Example JSON*:
+
+```json
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -290,8 +291,8 @@ No, because inline policy has one-to-one mapping. cannot have policy on more tha
     }
   ]
 }
-
 ```
+
 ### Permissions Boundary Example
 - **Scenario**:
   - Identity-based policy allows `iam:CreateUser`.
@@ -499,23 +500,30 @@ AWS IAM addresses several components of the X.800 standard:
 - Question: **What is the difference between OSI and TCP/IP models?**
   - **OSI** has 7 layers with distinct Presentation and Session layers.
   - **TCP/IP Original** combines these into a single **Application layer**.
+
 ## 5-layer TCP/IP Model Overview
+
 1. **Application Layer**:
    - Provides services directly to applications.
    - Examples: **HTTP, HTTPS** for web browsing, **SSH** for remote access.
+     
 2. **Transport Layer**:
    - Manages end-to-end data transfer between applications.
    - Examples: **TCP** (reliable), **UDP** (fast, connectionless).
+     
 3. **Network Layer**:
    - Routes packets to their destination.
    - Examples: **IP**, **ICMP**.
+     
 4. **Data Link Layer**:
    - Facilitates node-to-node data transfer.
    - Uses MAC addresses for identification.
    - Examples: **Ethernet**, **Wi-Fi**.
+     
 5. **Physical Layer**:
    - Manages data transmission over physical media.
    - Examples: **Optical fibers**, **Wireless radio waves**.
+     
 ## Data Transmission in TCP/IP Model
 - **Encapsulation Process**:
   - Application data → Transport segment (TCP/UDP) → Network packet (IP) → Data Link frame (MAC) → Physical bits.
@@ -544,29 +552,29 @@ AWS IAM addresses several components of the X.800 standard:
 ### Example: Path-based routing
 - Rule 1: URL pattern `/public/home` routes requests to `PublicWebServer` target group.
 
-```json
-[
-{
-"Field": "path-pattern",
-"PathPatternConfig": {
-"Values": ["/public/*"]
-}
-}
-]
-```
+  ```json
+  [
+    {
+      "Field": "path-pattern",
+      "PathPatternConfig": {
+        "Values": ["/public/*"]
+      }
+    }
+  ]
+  ```
 
 - Rule 2: URL pattern `/admin/settings` routes requests to `AdminConsole` target group.
 
-```json
-[
-{
-"Field": "path-pattern",
-"PathPatternConfig": {
-"Values": ["/admin/*"]
-}
-}
-]
-```
+  ```json
+  [
+    {
+      "Field": "path-pattern",
+      "PathPatternConfig": {
+        "Values": ["/admin/*"]
+      }
+    }
+  ]
+  ```
 
 ### Benefits of ELB
 - **Availability & Fault Tolerance**: Ensures web application is accessible and resilient.
@@ -688,10 +696,12 @@ AWS IAM addresses several components of the X.800 standard:
   - **Listener**: Manages incoming connections.
   - **Routing**: Directs connections to appropriate target groups.
 ### Important Questions and Explanations
+
 1. **Horizontal vs. Vertical Scaling**:
    - **Horizontal Scaling**: Adding more instances to distribute load.
    - **Vertical Scaling**: Increasing resources (e.g., CPU/RAM) on a single instance.
-  2. **VPC and Internal Scheme Relation**:
+
+2. **VPC and Internal Scheme Relation**:
    - **Internal ALB** routes within VPC without exposing endpoints to the internet, essential for secure private networks.
 
 ### Networking - Assignment Questions
@@ -805,14 +815,18 @@ $$
 ## Loss and Cost Functions
 - **Loss**:
   - Difference between the prediction and the actual value for an individual data instance.
+
 $$
 Example Loss Function: ( l(\hat{y}, y) = (\hat{y} - y)^2
 $$
+
 - **Cost**:
   - Aggregate of losses across all data instances.
+
 $$
   Example Cost Function:  C(\theta) = \frac{1}{N} \sum_{i=1}^{N} (\hat{y}_i - y_i)^2
 $$
+
 - **Training Goal**:
   - Minimize **Cost** to improve model accuracy.
   
@@ -825,22 +839,29 @@ $$
 ### Classification Metrics
 - **Accuracy**:
   - Proportion of correctly classified instances.
+
 $$
  \text{Accuracy} = \frac{TP + TN}{TP + FP + FN + TN}
 $$
+
 - **Precision**:
   - Proportion of true positive predictions among all positive predictions.
   - "Out of all positive predictions, how many were correct?"
+  
   $$\text{Precision} = \frac{TP}{TP + FP}$$
+  
 - **Recall**:
   - Proportion of true positive predictions among all actual positives.
   - "Out of all actual positives, how many were correctly identified?"
+
 $$
 \text{Recall} = \frac{TP}{TP + FN}
 $$
+
 - **F1 Score**:
   - Harmonic mean of precision and recall.
   - Balances both metrics.
+
 $$
  \text{F1 Score} = 2 \times \frac{\text{Precision} \times \text{Recall}}{\text{Precision} + \text{Recall}}
 $$
@@ -1568,53 +1589,67 @@ return self.name  # displays the artist name in list views
 3. **Using AWS Elastic Beanstalk (Managed Application Deployment)**
    - Deploy each microservice as a separate application on Elastic Beanstalk.
    - **Benefits**: Simplifies deployment and management while automatically handling load balancing and scaling.
+
 ### Benefits of Microservices on AWS
+
 - **Scalability**: Each microservice can scale independently based on demand.
 - **Fault Isolation**: Isolates failures, so one service failure doesn’t impact others.
 - **Independent Deployment**: Enables continuous deployment without affecting the entire application.
+
 ### Handling Authentication and Authorization
 - **AWS IAM**: Use IAM roles and policies for secure access control between AWS services.
 - **API Gateway Authentication**: Integrate API Gateway with Cognito or use API keys, Lambda authorizers, or IAM-based authentication.
-- **AWS Cognito**: Provides user pools and identity pools to manage authentication and access for users, useful for both API Gateway and direct client access. 
+- **AWS Cognito**: Provides user pools and identity pools to manage authentication and access for users, useful for both API Gateway and direct client access.
+
 This approach improves security by enforcing strict access control and separation of concerns across services.
+
 ## Serverless Architecture Microservice Explained
+
 ### Implementation with AWS Lambda
 - **API Gateway**: Acts as the entry point for client requests, routing them to appropriate Lambda functions.
 - **Lambda Functions**: Each Lambda function represents a microservice that handles specific business logic and scales automatically based on demand.
 - **DynamoDB**: A NoSQL database used for data storage, allowing Lambda functions to remain stateless.
 - **CloudWatch**: Provides monitoring and logging for Lambda function execution, offering visibility into performance and errors.
+
 ### Benefits of Using Lambda for Microservices
 - **Scalability**: Automatically scales based on incoming requests.
 - **Reduced Overhead**: No server management required, fully managed by AWS.
 - **Cost Efficiency**: Operates on a pay-per-use model, charging only for compute time.
 - **Decoupling**: Enables independent development, deployment, and scaling for each Lambda function.
+
 ### Authentication and Authorization
 - **Amazon Cognito**: Manages user authentication and integrates with API Gateway.
 - **API Gateway + IAM Policies**: Enforces authorization by checking user roles and permissions.
 - **JWT Tokens**: Cognito issues JWTs for secure access; Lambda functions validate these tokens to ensure authorized requests.
+
 # DevOps Overview
 - **DevOps**: Combination of cultural philosophies, practices, and tools to deliver applications faster than traditional software development.
 
 ![Pasted image 20241029113824.png](Cloud%20Computing%20%20Exam%20Notes-media/18e1f74149a697f5a948a545dc63df17a534c42c.png "wikilink")
 
 ### DevOps Best Practices
+
 1. **Microservices**: 
    - Application is divided into small, loosely-coupled services.
    - Each service runs in its own process and communicates via network.
    - **Benefit**: Enables flexibility and easier updates.
    - **Example**: AWS Lambda.
+     
 2. **Monitoring and Logging**:
    - Continuous tracking of application and infrastructure performance.
    - **Benefit**: Helps in identifying real-time issues.
    - **Example**: AWS CloudWatch.
+     
 3. **Continuous Integration (CI)**:
    - Developers integrate code into a shared repository frequently.
    - Automated builds and tests are triggered after each integration.
    - **Benefit**: Speeds up bug detection and improves productivity.
+     
 4. **Continuous Delivery (CD)**:
    - Builds on CI by deploying changes to testing environments.
    - Prepares code for deployment to production with minimal manual intervention.
    - **Benefit**: Reduces time to release new features.
+     
 5. **Continuous Deployment**:
    - Extends CD by automatically deploying to production upon passing tests.
    - **Benefit**: Enables faster updates for users.
@@ -1622,14 +1657,18 @@ This approach improves security by enforcing strict access control and separatio
 ![Pasted image 20241029114458.png](Cloud%20Computing%20%20Exam%20Notes-media/750f7587964cfe6c41effef476aed5b7d50efe8d.png "wikilink")
 
 ### The Software/Application Release Process
+
 1. **Source Control**:
    - Use Version Control Systems (VCS) like Git for tracking and managing code changes.
+     
 2. **Run Build and Unit Tests**:
    - Automated tests ensure individual components work correctly.
    - Failures alert developers to potential issues before deployment.
+     
 3. **Deploy to Test Environment**:
    - Deploys to a staging area for testing in an environment similar to production.
    - Includes various tests like functional, integration, and workload tests.
+
 4. **Deploy to Production Environment**:
    - Final deployment where the application is accessible to end-users.
 
@@ -1643,12 +1682,12 @@ This approach improves security by enforcing strict access control and separatio
 - OpenSSH is used for user/client authentication by generating a pair of cryptographic keys (public and private).
   - Public Key: Shared with the server.
   - Private Key: Kept secure on the client.
-- 
+
 - **Question:** How is OpenSSH used for user/client authentication?
 
 ![Pasted image 20241029120336.png](Cloud%20Computing%20%20Exam%20Notes-media/eef9d971522e794b656a8fcfa562d7dc627391eb.png "wikilink")
 
-- **Explanation of Diagram**:
+**Explanation of Diagram**:
   1. Client initiates SSH connection.
   2. Server sends a random message to the client.
   3. Client encrypts this message using its private key.
@@ -1662,21 +1701,22 @@ This approach improves security by enforcing strict access control and separatio
 ```bash
 ls ~/.ssh
 ```
+
 2. **Generate OpenSSH Keys (if not present)**:
 
 ```bash
 ssh-keygen -t rsa -b 4096 -C email@example.com
 ```
-
    - Private Key: `id_rsa`
    - Public Key: `id_rsa.pub`
+
 3. **Add Public Key to GitHub**:
    - Go to GitHub settings under "SSH and GPG keys."
-
 
 ![Pasted image 20241029120356.png](Cloud%20Computing%20%20Exam%20Notes-media/9591608ca0ee66763fc563eb00f2e7f1ac061a74.png "wikilink")
 
 ## Configuring OpenSSH for Fabric
+
 1. **Install Fabric**:
 
 ```bash
@@ -1696,6 +1736,7 @@ IdentityFile ~/.ssh/myFabricKey.pem
 ```
 
 - **Implications**:
+
   - `UserKnownHostsFile /dev/null` and `StrictHostKeyChecking no` disable host key checking, reducing security.
   - Justification: Disabling host checks skips server authentication.
 ## Server/Host Authentication in SSH
