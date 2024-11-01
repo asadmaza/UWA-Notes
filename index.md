@@ -14,6 +14,6 @@ Feel free to reach out to me if you have any questions ⁉️. Goodluck with you
 
 # Notes 🗒️:
 
-### [INMT5526 Business Intelligence Semester 2 2024](Test%20file.md)
+### [INMT5526 Business Intelligence Semester 2 2024](BI.md)
 
 
