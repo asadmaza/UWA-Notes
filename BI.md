@@ -774,52 +774,71 @@ department, SaleYear, SaleMonth;
 #### Joins in Practice
 - **Example**:
   - **TableOne**:
+
     | idOne | dataOne     |
     |-------|-------------|
     | 1     | Hello       |
     | 2     | What's      |
     | 3     | Happening   |
+    
   - **TableTwo**:
+    
     | idTwo | dataTwo     |
     |-------|-------------|
     | 2     | World       |
     | 4     | Up          |
     | 6     | Now!        |
+    
   - **INNER JOIN Example**:
+    
 	```sql
 	SELECT * FROM TableOne INNER JOIN TableTwo ON TableOne.idOne =                 TableTwo.idTwo;
 	```
+  
 	Result:
+
     | idOne | dataOne | idTwo | dataTwo |
     |-------|---------|-------|---------|
     | 2     | What's  | 2     | World   |
+    
   - **LEFT JOIN Example**:
+    
     ```sql
     SELECT * FROM TableOne LEFT JOIN TableTwo ON TableOne.idOne =                  TableTwo.idTwo;
     ```
+    
     Result:
+    
     | idOne | dataOne     | idTwo | dataTwo |
     |-------|-------------|-------|---------|
     | 1     | Hello       | NULL  | NULL    |
     | 2     | What's      | 2     | World   |
     | 3     | Happening   | NULL  | NULL    |
+    
   - **RIGHT JOIN Example**:
+    
     ```sql
     SELECT * FROM TableOne RIGHT JOIN TableTwo ON TableOne.idOne =                 TableTwo.idTwo;
     ```
+    
     Result:
+    
     | idOne | dataOne     | idTwo | dataTwo |
     |-------|-------------|-------|---------|
     | 2     | What's      | 2     | World   |
     | NULL  | NULL        | 4     | Up      |
     | NULL  | NULL        | 6     | Now!    |
+    
   - **FULL OUTER JOIN Example** (Using `UNION` of LEFT and RIGHT JOIN results):
+    
     ```sql
     SELECT * FROM TableOne LEFT JOIN TableTwo ON TableOne.idOne = TableTwo.idTwo
     UNION
     SELECT * FROM TableOne RIGHT JOIN TableTwo ON TableOne.idOne = TableTwo.idTwo;
     ```
+    
     Result:
+    
     | idOne | dataOne     | idTwo | dataTwo |
     |-------|-------------|-------|---------|
     | 1     | Hello       | NULL  | NULL    |
@@ -827,41 +846,60 @@ department, SaleYear, SaleMonth;
     | 3     | Happening   | NULL  | NULL    |
     | NULL  | NULL        | 4     | Up      |
     | NULL  | NULL        | 6     | Now!    |
+    
 ### SQL - Views on Tables
+
 **Purpose of Views**: Generate a new table from the result of a `SELECT` query.
   - Can be a filtered version of a single table (e.g., using `WHERE`).
   - Can be the result of a `JOIN` between two tables.
+    
 - **Accessing Views**: Access the view like any other table.
+  
   ```sql
   SELECT * FROM ViewName;
   ```
+  
 #### Syntax of Creating a View
 - **Creating a View**:
+  
   ```sql
   CREATE VIEW <ViewName> AS SELECT ...
   ```
+  
 - **Updating a View**:
+  
   ```sql
   CREATE OR REPLACE VIEW <ViewName> AS SELECT ...
   ```
+  
 - **Deleting a View**:
+  
   ```sql
   DROP VIEW <ViewName>;
   ```
+  
 - **Show View Definition**:
+  
   ```sql
   SHOW CREATE VIEW <ViewName>;
   ```
+  
 #### Examples of Views
+
 - **Basic View**:
+  
   ```sql
   CREATE VIEW ExampleView AS SELECT * FROM ExampleTable;
   ```
+  
 - **Filtered Column View**:
+  
   ```sql
   CREATE VIEW ExampleViewTwo AS SELECT AttributeOne FROM ExampleTable;
   ```
+  
 - **Aggregated View**:
+  
   ```sql
   CREATE VIEW ExampleViewThree AS 
   SELECT AttributeThree, MAX(AttributeTwo) 
@@ -870,7 +908,9 @@ department, SaleYear, SaleMonth;
   GROUP BY AttributeThree 
   ORDER BY AttributeThree DESC;
   ```
+  
 #### SQL - Spatial Databases
+
 - **Spatial Data**  
   - Describes physical location of each observation in the real world.
   - Uses latitude and longitude to specify locations.
@@ -884,26 +924,36 @@ department, SaleYear, SaleMonth;
   - **Latitude**: Runs along the north-south direction.
 - **Creating Point Data in MySQL**  
   - Define a spatial attribute using `geometry POINT`.
+    
     ```sql
     CREATE TABLE GeometryTable (geometry POINT);
     ```
+    
   - Insert spatial data with specific format:
+    
     ```sql
     INSERT INTO GeometryTable VALUES (ST_GeomFromText('POINT(Long Lat)'));
     ```
+    
     - Example: `POINT(114.5 -23.7)` for specific longitude and latitude.
-- **Spatial Queries**  
+      
+- **Spatial Queries**
+  
   - Filter data within a certain distance from a point using `ST_Distance_Sphere`.
+    
     ```sql
     SELECT * FROM <TableName> 
     WHERE ST_Distance_Sphere(<GeomField>, ST_GeomFromText(<Location>)) <= 10 * 1000;
     ```
+    
   - Useful for finding locations within a specific radius.
 - **Viewing Geometries as Text**  
   - Use `ST_AsText` to view geometry data in readable format.
+    
     ```sql
     SELECT ST_AsText(<FieldName>) FROM <TableName>;
     ```
+    
   - Helps when visualizing geometry fields without cryptic characters.
 ### SQL - Loading Spreadsheets
 **Purpose**: Translate spreadsheet data into a database to leverage database advantages over spreadsheets.
