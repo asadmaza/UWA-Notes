@@ -6,7 +6,7 @@ Commercial use is prohibited 🚫, please attribute or link my work to others, I
 
 # Notes 🗒️:
 
-### [INMT5526 Business Intelligence Semester 2 2024](BI.md)
+### [INMT5526 Business Intelligence Semester 2 2024](BI.html)
 
 # Tips
 
