@@ -1,9 +1,3 @@
----
-layout: default
-title: "Business Intelligence Notes"
----
-
-
 # Introduction to Business Intelligence
 ## Business Intelligence Topic
 ### Business Intelligence - Definition
@@ -335,13 +329,16 @@ SQL Basics
   - **Permissions**: Access rights can vary across tables and databases.
 #### SQL - Creating a Table: CREATE TABLE
 **CREATE TABLE** command:
+
 ```sql
 CREATE TABLE <DatabaseName>.<TableName> (
     <ColumnName> <DataType> <Modifiers>,
     PRIMARY KEY (<ColumnName>)
 );
 ```
+
 **CREATE TABLE** example:
+
 ```sql
 CREATE TABLE 12345678_db.TestTable (
     id int NOT NULL,
@@ -350,6 +347,7 @@ CREATE TABLE 12345678_db.TestTable (
     PRIMARY KEY (id)
 );
 ```
+
 #### SQL - MySQL Data Types
 - **DATE:** Stores dates in `YYYY-MM-DD`.
 - **TIME:** Stores times in `HH:MM:SS`.
@@ -359,9 +357,11 @@ CREATE TABLE 12345678_db.TestTable (
 - **BOOLEAN:** TRUE/FALSE stored as 0 or 1.
 - **INT:** Integer (whole number).
 - **FLOAT:** Floating point number.
+
 #### SQL - Other Data Types
 - Other data types include **JSON documents**, **binary strings**, and **blobs** (for storing images or spatial data).
 - Numeric formats like **TINYINT** handle specialized cases.
+
 ### SQL - Attribute (Field) Modifiers
 - **PRIMARY KEY:** Designates a column as unique identifier.
 - **AUTO_INCREMENT:** Automatically increases integer value for each row.
@@ -774,52 +774,71 @@ department, SaleYear, SaleMonth;
 #### Joins in Practice
 - **Example**:
   - **TableOne**:
+
     | idOne | dataOne     |
     |-------|-------------|
     | 1     | Hello       |
     | 2     | What's      |
     | 3     | Happening   |
+    
   - **TableTwo**:
+    
     | idTwo | dataTwo     |
     |-------|-------------|
     | 2     | World       |
     | 4     | Up          |
     | 6     | Now!        |
+    
   - **INNER JOIN Example**:
+    
 	```sql
 	SELECT * FROM TableOne INNER JOIN TableTwo ON TableOne.idOne =                 TableTwo.idTwo;
 	```
+  
 	Result:
+
     | idOne | dataOne | idTwo | dataTwo |
     |-------|---------|-------|---------|
     | 2     | What's  | 2     | World   |
+    
   - **LEFT JOIN Example**:
+    
     ```sql
     SELECT * FROM TableOne LEFT JOIN TableTwo ON TableOne.idOne =                  TableTwo.idTwo;
     ```
+    
     Result:
+    
     | idOne | dataOne     | idTwo | dataTwo |
     |-------|-------------|-------|---------|
     | 1     | Hello       | NULL  | NULL    |
     | 2     | What's      | 2     | World   |
     | 3     | Happening   | NULL  | NULL    |
+    
   - **RIGHT JOIN Example**:
+    
     ```sql
     SELECT * FROM TableOne RIGHT JOIN TableTwo ON TableOne.idOne =                 TableTwo.idTwo;
     ```
+    
     Result:
+    
     | idOne | dataOne     | idTwo | dataTwo |
     |-------|-------------|-------|---------|
     | 2     | What's      | 2     | World   |
     | NULL  | NULL        | 4     | Up      |
     | NULL  | NULL        | 6     | Now!    |
+    
   - **FULL OUTER JOIN Example** (Using `UNION` of LEFT and RIGHT JOIN results):
+    
     ```sql
     SELECT * FROM TableOne LEFT JOIN TableTwo ON TableOne.idOne = TableTwo.idTwo
     UNION
     SELECT * FROM TableOne RIGHT JOIN TableTwo ON TableOne.idOne = TableTwo.idTwo;
     ```
+    
     Result:
+    
     | idOne | dataOne     | idTwo | dataTwo |
     |-------|-------------|-------|---------|
     | 1     | Hello       | NULL  | NULL    |
@@ -827,41 +846,60 @@ department, SaleYear, SaleMonth;
     | 3     | Happening   | NULL  | NULL    |
     | NULL  | NULL        | 4     | Up      |
     | NULL  | NULL        | 6     | Now!    |
+    
 ### SQL - Views on Tables
+
 **Purpose of Views**: Generate a new table from the result of a `SELECT` query.
   - Can be a filtered version of a single table (e.g., using `WHERE`).
   - Can be the result of a `JOIN` between two tables.
+    
 - **Accessing Views**: Access the view like any other table.
+  
   ```sql
   SELECT * FROM ViewName;
   ```
+  
 #### Syntax of Creating a View
 - **Creating a View**:
+  
   ```sql
   CREATE VIEW <ViewName> AS SELECT ...
   ```
+  
 - **Updating a View**:
+  
   ```sql
   CREATE OR REPLACE VIEW <ViewName> AS SELECT ...
   ```
+  
 - **Deleting a View**:
+  
   ```sql
   DROP VIEW <ViewName>;
   ```
+  
 - **Show View Definition**:
+  
   ```sql
   SHOW CREATE VIEW <ViewName>;
   ```
+  
 #### Examples of Views
+
 - **Basic View**:
+  
   ```sql
   CREATE VIEW ExampleView AS SELECT * FROM ExampleTable;
   ```
+  
 - **Filtered Column View**:
+  
   ```sql
   CREATE VIEW ExampleViewTwo AS SELECT AttributeOne FROM ExampleTable;
   ```
+  
 - **Aggregated View**:
+  
   ```sql
   CREATE VIEW ExampleViewThree AS 
   SELECT AttributeThree, MAX(AttributeTwo) 
@@ -870,7 +908,9 @@ department, SaleYear, SaleMonth;
   GROUP BY AttributeThree 
   ORDER BY AttributeThree DESC;
   ```
+  
 #### SQL - Spatial Databases
+
 - **Spatial Data**  
   - Describes physical location of each observation in the real world.
   - Uses latitude and longitude to specify locations.
@@ -884,26 +924,36 @@ department, SaleYear, SaleMonth;
   - **Latitude**: Runs along the north-south direction.
 - **Creating Point Data in MySQL**  
   - Define a spatial attribute using `geometry POINT`.
+    
     ```sql
     CREATE TABLE GeometryTable (geometry POINT);
     ```
+    
   - Insert spatial data with specific format:
+    
     ```sql
     INSERT INTO GeometryTable VALUES (ST_GeomFromText('POINT(Long Lat)'));
     ```
+    
     - Example: `POINT(114.5 -23.7)` for specific longitude and latitude.
-- **Spatial Queries**  
+      
+- **Spatial Queries**
+  
   - Filter data within a certain distance from a point using `ST_Distance_Sphere`.
+    
     ```sql
     SELECT * FROM <TableName> 
     WHERE ST_Distance_Sphere(<GeomField>, ST_GeomFromText(<Location>)) <= 10 * 1000;
     ```
+    
   - Useful for finding locations within a specific radius.
 - **Viewing Geometries as Text**  
   - Use `ST_AsText` to view geometry data in readable format.
+    
     ```sql
     SELECT ST_AsText(<FieldName>) FROM <TableName>;
     ```
+    
   - Helps when visualizing geometry fields without cryptic characters.
 ### SQL - Loading Spreadsheets
 **Purpose**: Translate spreadsheet data into a database to leverage database advantages over spreadsheets.
