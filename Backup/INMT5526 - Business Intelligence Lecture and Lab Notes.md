@@ -15,6 +15,7 @@ Combines the following to help organisations make more data-driven decisions:
 4. Data Tools  
 5. Data Infrastructures  
 6. Best practices
+
 **Misconception:** Data generation is not a part of business analytics
 \### Business Intelligence - Evolution
 Changed from "data sharing" to something that combines analytics, data mining, visualization, tools, infrastructures, and best practices to support "modelling for making decisions".
