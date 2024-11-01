@@ -1230,12 +1230,14 @@ Here's a condensed Markdown note format based on the images you've provided. The
 4. **Render templates with retrieved data**: Display data from the database in templates.
 ## Step 1: Create a Virtual Environment
 ### Command to Create a Virtual Environment
+
 ```bash
 mkdir ~/cits5503_django
 cd cits5503_django
 python3 -m venv cits5503venv
 source cits5503venv/bin/activate
 ```
+
 - **Why use a virtual environment?**
   - **Isolation**: Keeps Python dependencies separate for each project.
   - **Ease of Deployment**: Requirements can be listed using `pip freeze > requirements.txt` and reinstalled with `pip install -r requirements.txt`.
@@ -1253,21 +1255,23 @@ python3 manage.py startapp music
   - `django-admin startproject CITS5503 .`: Creates project files directly in the current directory.
 ## Step 3: Start the Django Application Server
 ### Commands to Start Server
+
 ```bash
 python manage.py check  # Checks for issues
 python manage.py runserver  # Starts server on default port 8000
 ```
+
 - **Default Port**: 8000
 - **Custom Port** (if 8000 is in use):
-  ```bash
-  python manage.py runserver 9000
-  ```
+
+```bash
+python manage.py runserver 9000
+```
+
   - **Example (nginx config)**:
-  {% raw %}
-    ```html
-    proxy_pass http://127.0.0.1:8000;
-    ```
-  {% endraw %}
+```nginx
+proxy_pass http://127.0.0.1:8000;
+```
   
 ## Step 4: Access the Server
 - **Access URL**: Open a browser and go to `http://localhost:9000`
@@ -1277,18 +1281,18 @@ python manage.py runserver  # Starts server on default port 8000
 
 ## Step 5: Create an Admin
 1. **Run Migrations**: Apply initial migrations to set up database tables.
-   ```bash
-   python manage.py migrate  # Applies all migrations (admin, auth, contenttypes, sessions)
-   ```
+```bash
+python manage.py migrate  # Applies all migrations (admin, auth, contenttypes, sessions)
+```
    - **Implications if Misused**: Skipping migrations can lead to missing tables and errors in the admin panel.
 
       ![Pasted image 20241029110711.png](Cloud%20Computing%20%20Exam%20Notes-media/62d2ce91202c06d127e3e29cd50ec7cafda006b8.png "wikilink")
 
 2. **Check Database**: Verify database tables with SQLite.
-   ```bash
-   sqlite3 db.sqlite3  # Opens database in SQLite
-   .tables  # Lists all tables
-   ```
+```bash
+sqlite3 db.sqlite3  # Opens database in SQLite
+.tables  # Lists all tables
+```
    - **Example Tables**: `auth_user`, `django_session`, `auth_group`
 
       ![Pasted image 20241029110739.png](Cloud%20Computing%20%20Exam%20Notes-media/13167f16278bddd44fc5a86d8dde60a0a079eadb.png "wikilink")
@@ -1299,9 +1303,9 @@ python manage.py runserver  # Starts server on default port 8000
    ```
    - **Implications if Misused**: Not creating an admin limits access to the Django admin panel.
 4. **Restart the Server**: Ensure server reflects any recent changes.
-   ```bash
-   python manage.py runserver
-   ```
+```bash
+python manage.py runserver
+```
 
     ![Pasted image 20241029111000.png](Cloud%20Computing%20%20Exam%20Notes-media/406ae5715493e69b3e9e274027166ef162c92fb4.png "wikilink")
 
@@ -1315,9 +1319,9 @@ python manage.py runserver  # Starts server on default port 8000
 - **Add App to Installed Apps**:
   - Open `CITS5503/settings.py`.
   - Add the following line to `INSTALLED_APPS`:
-    ```python
-    'music.apps.MusicConfig',  # Registers the music app
-    ```
+```python
+'music.apps.MusicConfig',  # Registers the music app
+```
   - **Implications if Misused**: If not registered, Django will not recognize the app, causing issues in routing and functionality.
 ### Code Example
 ```python
@@ -1351,9 +1355,9 @@ INSTALLED_APPS = [
   - **Implications if Misused**: Missing or incorrect views result in "page not found" errors.
 ## Step 4: Access the App
 - **Restart Server**: Restart the server to apply changes.
-  ```bash
-  python manage.py runserver 9000
-  ```
+```bash
+python manage.py runserver 9000
+```
 - **Access URL**: Go to `http://localhost:9000` to view the home page message.
 
   ![Pasted image 20241029111147.png](Cloud%20Computing%20%20Exam%20Notes-media/b049ff79117a5c488512adc6f1e134982597dc54.png "wikilink")
@@ -1362,15 +1366,15 @@ INSTALLED_APPS = [
 ## Step 1: Create HTML Templates in the Project and App
 1. **Create Template Directories**:
    - Inside the current working directory of the project:
-     ```bash
-     mkdir templates
-     mkdir music/templates
-     mkdir music/templates/music
-     ```
+```bash
+mkdir templates
+mkdir music/templates
+mkdir music/templates/music
+```
    - **Implications if Misused**: Missing directories will prevent Django from finding templates.
 2. **Create HTML Files**:
 
-    ![image](https://github.com/user-attachments/assets/dee1cb7e-3ee0-455c-a437-2ae2f8a838c8)
+![image](https://github.com/user-attachments/assets/dee1cb7e-3ee0-455c-a437-2ae2f8a838c8)
 
    - **Implications if Misused**: Missing HTML files result in rendering errors.
 ### Code Example for `templates/home.html`
@@ -1402,6 +1406,7 @@ INSTALLED_APPS = [
      ![image](https://github.com/user-attachments/assets/d2dccc4d-a4a0-4c24-ad2b-f730d7c29c21)
 
    - **Implications if Misused**: Incorrect template names or paths will lead to template loading errors.
+
 ## Step 5: Register the Home Template in the Project
 1. **Configure Template Directory**:
    - Open `CITS5503/settings.py`.
@@ -1448,10 +1453,12 @@ INSTALLED_APPS = [
 - **Implication**: Registering the model allows it to be managed in the Django admin interface.
 ### Step 3: Make and Apply Database Migrations
 - **Commands**:
+
   ```bash
   python manage.py makemigrations  # creates migration files
   python manage.py migrate         # applies migrations to the database
   ```
+  
 - **Output**: Confirms creation of `music_artist` table in the database.
 - **Implication**: Skipping migrations will prevent the model from being reflected in the database.
 
@@ -1466,10 +1473,12 @@ INSTALLED_APPS = [
 ### Step 5: Populate the Artist Table
 - **Action**: Use the admin interface to add artist entries, e.g., "Jerry" and "Tom."
 - **Code** in `models.py`:
-  ```python
-  def __str__(self):
-      return self.name  # displays the artist name in list views
-  ```
+
+```python
+def __str__(self):
+return self.name  # displays the artist name in list views
+```
+
   ![Pasted image 20241029111950.png](Cloud%20Computing%20%20Exam%20Notes-media/f72f690cfb88c4ff1f8bb8f3c6faf66ccdff49f9.png "wikilink")
 
 ### Step 6: Update the View Component in the App
@@ -1477,7 +1486,6 @@ INSTALLED_APPS = [
 - **Code**:
 
 ![image](https://github.com/user-attachments/assets/17b066c6-db35-4db3-88af-723f341327fd)
-
 
 - **Explanation**: Retrieves all artist entries and passes them to the `artist.html` template.
 - **Implication**: Missing data retrieval or incorrect context keys will lead to display errors.
@@ -1609,36 +1617,43 @@ This approach improves security by enforcing strict access control and separatio
   6. If messages match, authentication succeeds.
 ## Adding SSH Public Key to GitHub
 1. **Check for Existing OpenSSH Key Pairs**:
-   ```bash
-   ls ~/.ssh
-   ```
+
+```bash
+ls ~/.ssh
+```
 2. **Generate OpenSSH Keys (if not present)**:
-   ```bash
-   ssh-keygen -t rsa -b 4096 -C email@example.com
-   ```
+
+```bash
+ssh-keygen -t rsa -b 4096 -C email@example.com
+```
+
    - Private Key: `id_rsa`
    - Public Key: `id_rsa.pub`
 3. **Add Public Key to GitHub**:
    - Go to GitHub settings under "SSH and GPG keys."
 
 
-      ![Pasted image 20241029120356.png](Cloud%20Computing%20%20Exam%20Notes-media/9591608ca0ee66763fc563eb00f2e7f1ac061a74.png "wikilink")
+![Pasted image 20241029120356.png](Cloud%20Computing%20%20Exam%20Notes-media/9591608ca0ee66763fc563eb00f2e7f1ac061a74.png "wikilink")
 
 ## Configuring OpenSSH for Fabric
 1. **Install Fabric**:
-   ```bash
-   pip install fabric
-   ```
+
+```bash
+pip install fabric
+```
+
 2. **Create a Config File** in `~/.ssh` with the following contents:
-   ```text
-   Host myFabric
-   Hostname 3.26.156.206
-   User ec2-user
-   UserKnownHostsFile /dev/null  # Disables host file check, insecure
-   StrictHostKeyChecking no       # Disables host key check, insecure
-   PasswordAuthentication no
-   IdentityFile ~/.ssh/myFabricKey.pem
-   ```
+
+```text
+Host myFabric
+Hostname 3.26.156.206
+User ec2-user
+UserKnownHostsFile /dev/null  # Disables host file check, insecure
+StrictHostKeyChecking no       # Disables host key check, insecure
+PasswordAuthentication no
+IdentityFile ~/.ssh/myFabricKey.pem
+```
+
 - **Implications**:
   - `UserKnownHostsFile /dev/null` and `StrictHostKeyChecking no` disable host key checking, reducing security.
   - Justification: Disabling host checks skips server authentication.
@@ -1648,51 +1663,60 @@ This approach improves security by enforcing strict access control and separatio
   - Host Private Key: Kept secure on the host.
 - **Key Exchange**: Occurs when a client connects to a server for the first time.
 
-  ![Pasted image 20241029120505.png](Cloud%20Computing%20%20Exam%20Notes-media/e416d01b98bd13a4b7f76f9eecd0dba9a8ffeef4.png "wikilink")
+![Pasted image 20241029120505.png](Cloud%20Computing%20%20Exam%20Notes-media/e416d01b98bd13a4b7f76f9eecd0dba9a8ffeef4.png "wikilink")
 
 ## Host Key Checking in SSH
 - **Host Key Checking**:
   - The client verifies the server's host key against the `known_hosts` file.
   - If the key matches, the server is authenticated.
 
-    ![Pasted image 20241029120520.png](Cloud%20Computing%20%20Exam%20Notes-media/92449c3f4cf2189a71e8d1a3d2c98e50cc3e4d20.png "wikilink")
+![Pasted image 20241029120520.png](Cloud%20Computing%20%20Exam%20Notes-media/92449c3f4cf2189a71e8d1a3d2c98e50cc3e4d20.png "wikilink")
 
 ## Fabric Common Functions
 1. **Upload a Local File to Remote Server**:
-   ```python
-   c.put(localfile, remotefilepath)
-   ```
-2. **Run a Remote Command**:
-   ```python
-   c.run(command, otherargs)
-   ```
-3. **Run a Remote Command with `sudo`**:
-   ```python
-   c.sudo(command, otherargs)
-   ```
+
+```python
+c.put(localfile, remotefilepath)
+```
+   
+3. **Run a Remote Command**:
+
+```python
+c.run(command, otherargs)
+```
+   
+5. **Run a Remote Command with `sudo`**:
+
+```python
+c.sudo(command, otherargs)
+```
+   
 - **Example Code**:
-   ```python
-   from fabric import Connection
-   c = Connection('myFabric')
-   ```
+
+```python
+from fabric import Connection
+c = Connection('myFabric')
+```
+  
 ## `sudo` vs `su`
 - **sudo** (Superuser Do): Allows running specific commands as a superuser.
 - **su** (Switch User): Allows switching to another user account with a password.
  
   - **Example of `sudo`**:
-    ```bash
-    sudo vim /etc/sudoers
-    ```
+```bash
+sudo vim /etc/sudoers
+```
   - **Example of `su`**:
-    ```bash
-    su root
-    ```
+```bash
+su root
+```
 ## `su` vs. `su -`
 - **su**: Does not change the working directory.
 - **su -**: Changes to the target user’s home directory.
 ## Enable Server/Host Authentication in SSH Config
 - Update configuration to enforce host authentication:
-  ```plaintext
+
+  ```
   Host myFabric
   Hostname 3.26.156.206
   User ec2-user
@@ -1700,25 +1724,28 @@ This approach improves security by enforcing strict access control and separatio
   PasswordAuthentication no
   IdentityFile ~/.ssh/myFabricKey.pem
   ```
+  
   ![Pasted image 20241029121037.png](Cloud%20Computing%20%20Exam%20Notes-media/4f361288fff6aeefa1e845f057bb590232e17820.png "wikilink")
 
 ## fabfile.py
 - **Purpose**: A Python script with tasks for Fabric.
 - **@task Decorator**: Used to define Fabric tasks.
 - **Example Code**:
-  ```python
-  from fabric import task
 
-  @task
-  def fileOps(c):
-      if c.run('test -f ~/myFabricFile', warn=True).failed:
-          c.put('myFabricFile.tgz', '/home/ec2-user')
-      c.run('tar -C ~/ -xf /home/ec2-user/myFabricFile.tgz')
+```python
+from fabric import task
 
-  @task
-  def sudoOps(c):
-      c.sudo('cat /etc/passwd')
-  ```
+@task
+def fileOps(c):
+if c.run('test -f ~/myFabricFile', warn=True).failed:
+  c.put('myFabricFile.tgz', '/home/ec2-user')
+c.run('tar -C ~/ -xf /home/ec2-user/myFabricFile.tgz')
+
+@task
+def sudoOps(c):
+c.sudo('cat /etc/passwd')
+```
+
 - **Explanation**: `fileOps` checks for a file, uploads if missing, and extracts. `sudoOps` runs a command with sudo privileges.
 ## Executing fabfile.py
 1. **Navigate to Directory**:
@@ -1750,7 +1777,7 @@ This approach improves security by enforcing strict access control and separatio
 #### Step 2: Select a Lambda Blueprint
 - Choose a blueprint or create a new function.
 
-  ![Pasted image 20241029121310.png](Cloud%20Computing%20%20Exam%20Notes-media/4c1abbf6daae883ebcb69501ee8dbd91719bdbc7.png "wikilink")
+![Pasted image 20241029121310.png](Cloud%20Computing%20%20Exam%20Notes-media/4c1abbf6daae883ebcb69501ee8dbd91719bdbc7.png "wikilink")
 
 #### Step 3: Configure Basic Information
 - **Blueprint Name**: Select a name (e.g., "Hello world function").
@@ -1758,10 +1785,12 @@ This approach improves security by enforcing strict access control and separatio
 - **Runtime**: Select language runtime (e.g., Python 3.7).
 - **Execution Role**:
   - Create a new role or select an existing role with appropriate permissions.
-    ![Pasted image 20241029121323.png](Cloud%20Computing%20%20Exam%20Notes-media/515b7b1867caa9c7007a01ab2998592fae5d9000.png "wikilink")
+
+![Pasted image 20241029121323.png](Cloud%20Computing%20%20Exam%20Notes-media/515b7b1867caa9c7007a01ab2998592fae5d9000.png "wikilink")
     
 #### Step 4: Preconfigured Function Code
 - Modify or use the pre-configured code template.
+
 ```python
 import json
 
@@ -1773,6 +1802,7 @@ def lambda_handler(event, context):
     print("value3 = " + event['key3'])  # Access key3 value
     return event['key1']  # Returns first key value
 ```
+
 ### Configuring Events
 #### Step 5: Configure an Event to Trigger the Code
 - **Test Event**: Create a test event to simulate invocation.
@@ -1780,11 +1810,12 @@ def lambda_handler(event, context):
 - **Event Name**: e.g., `HelloCITS5503Event`.
 - **Event Type**: Private (default setting).
 
-  ![Pasted image 20241029121401.png](Cloud%20Computing%20%20Exam%20Notes-media/0c1585c896a2173eed84e49f04891ffcce0ebd8a.png "wikilink")
+![Pasted image 20241029121401.png](Cloud%20Computing%20%20Exam%20Notes-media/0c1585c896a2173eed84e49f04891ffcce0ebd8a.png "wikilink")
 
 #### Step 5.2: Configure Event Data
 - **Event JSON Template**: Define key-value pairs for test data.
 Example:
+
 ```json
 {
   "key1": "Hello, CITS5503",
@@ -1792,6 +1823,7 @@ Example:
   "key3": "value3"
 }
 ```
+
 #### Step 6: Trigger Lambda Function via Event
 - Use the **Test** button to trigger the Lambda function with configured event.
 #### Step 7: Execution Results
@@ -1801,19 +1833,19 @@ Example:
   - Output of print statements.
   - Execution duration and memory usage.
 
-    ![Pasted image 20241029121439.png](Cloud%20Computing%20%20Exam%20Notes-media/7a6bf28b8abc0fbe801485150248e5df3cdc5f46.png "wikilink")
+![Pasted image 20241029121439.png](Cloud%20Computing%20%20Exam%20Notes-media/7a6bf28b8abc0fbe801485150248e5df3cdc5f46.png "wikilink")
 
 ### Implications of Misconfiguration
 - **Incorrect Role Permissions**: Lambda function may fail to execute due to insufficient permissions.
 - **Inaccurate Event Configuration**: Improper JSON structure may cause function errors or unexpected behavior.
 # AWS Lambda Task 2: S3 Example
 
-  ![Pasted image 20241029121613.png](Cloud%20Computing%20%20Exam%20Notes-media/4a56dfad7a12afa2fbc17e5a1086a1849480879a.png "wikilink")
+![Pasted image 20241029121613.png](Cloud%20Computing%20%20Exam%20Notes-media/4a56dfad7a12afa2fbc17e5a1086a1849480879a.png "wikilink")
 
 #### Step 1: Create an S3 Bucket
 - **Description**: Create a bucket in Amazon S3 for storing objects that will trigger the Lambda function.
 
-  ![Pasted image 20241029121625.png](Cloud%20Computing%20%20Exam%20Notes-media/233ec7fc696daf4734894485891518d6588c0df5.png "wikilink")
+![Pasted image 20241029121625.png](Cloud%20Computing%20%20Exam%20Notes-media/233ec7fc696daf4734894485891518d6588c0df5.png "wikilink")
 
 #### Step 2: Create a Permissions Policy
 - **Description**: Define permissions for logging and accessing S3.
@@ -1821,29 +1853,29 @@ Example:
 - **Log Stream**: Sequence of log events from the same source.
 - **Log Group**: Group of log streams with shared monitoring settings.
 - **Policy JSON**:
-  ```json
+```json
+{
+"Version": "2012-10-17",
+"Statement": [
   {
-      "Version": "2012-10-17",
-      "Statement": [
-          {
-              "Effect": "Allow",
-              "Action": [
-                  "logs:PutLogEvents",
-                  "logs:CreateLogGroup",
-                  "logs:CreateLogStream"
-              ],
-              "Resource": "arn:aws:logs:*:*:*"
-          },
-          {
-              "Effect": "Allow",
-              "Action": [
-                  "s3:GetObject"
-              ],
-              "Resource": "arn:aws:s3:::*/*"
-          }
-      ]
+      "Effect": "Allow",
+      "Action": [
+	  "logs:PutLogEvents",
+	  "logs:CreateLogGroup",
+	  "logs:CreateLogStream"
+      ],
+      "Resource": "arn:aws:logs:*:*:*"
+  },
+  {
+      "Effect": "Allow",
+      "Action": [
+	  "s3:GetObject"
+      ],
+      "Resource": "arn:aws:s3:::*/*"
   }
-  ```
+]
+}
+```
 #### Step 3: Create an IAM Role
 - **Description**: Allow Lambda to assume a role to access S3 resources.
 - **Types of Trusted Entities**:
@@ -1866,31 +1898,32 @@ Example:
 
 - **Step 4.1**: Define function details like runtime, architecture, and existing IAM role.
 
-  ![Pasted image 20241029121954.png](Cloud%20Computing%20%20Exam%20Notes-media/b02cfa07900a855db291e8d62cef35fee582d62d.png "wikilink")
+![Pasted image 20241029121954.png](Cloud%20Computing%20%20Exam%20Notes-media/b02cfa07900a855db291e8d62cef35fee582d62d.png "wikilink")
 
 - **Step 4.2**: Create Lambda function code to process S3 events.
-  ```python
-  import json
-  import urllib.parse
-  import boto3
+```python
+import json
+import urllib.parse
+import boto3
 
-  print('Loading function')
+print('Loading function')
 
-  s3 = boto3.client('s3')
+s3 = boto3.client('s3')
 
-  def lambda_handler(event, context):
-      # Print received event for debugging
-      # print("Received event: " + json.dumps(event, indent=2))
-      bucket = event['Records'][0]['s3']['bucket']['name']  # Get bucket name
-      key = urllib.parse.unquote_plus(event['Records'][0]['s3']['object']['key'], encoding='utf-8')  # Get object key
-      try:
-          response = s3.get_object(Bucket=bucket, Key=key)
-          print("CONTENT TYPE: " + response['ContentType'])  # Log content type
-          return response['ContentType']
-      except Exception as e:
-          print(e)
-          raise e
-  ```
+def lambda_handler(event, context):
+# Print received event for debugging
+# print("Received event: " + json.dumps(event, indent=2))
+bucket = event['Records'][0]['s3']['bucket']['name']  # Get bucket name
+key = urllib.parse.unquote_plus(event['Records'][0]['s3']['object']['key'], encoding='utf-8')  # Get object key
+try:
+  response = s3.get_object(Bucket=bucket, Key=key)
+  print("CONTENT TYPE: " + response['ContentType'])  # Log content type
+  return response['ContentType']
+except Exception as e:
+  print(e)
+  raise e
+```
+
 **Explanation:**
 1. event['Records']: contains an array of records. A record corresponds to a specific event that triggered the lambda function.
 2. event['Records'][0]: retrieves the first record in this array.
