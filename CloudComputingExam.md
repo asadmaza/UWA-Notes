@@ -150,6 +150,7 @@ Here's the continuation of the notes for the topic "IAM - Cryptography" in Markd
 - **Action**: Lists allowed or denied operations a user/application can perform.
 - **Resource**: Specifies resources affected by the policy. ARN is often used.
 *Example JSON*:
+
 ```json
 {
   "Version": "2012-10-17",
@@ -162,6 +163,7 @@ Here's the continuation of the notes for the topic "IAM - Cryptography" in Markd
   ]
 }
 ```
+
 *Note*: No specific principal defined. Attaching this to a principal grants full administrator access.
 Here are the notes for the topic "IAM - Identity Access Management Continued" in Markdown format based on the provided screenshots.
 ## PowerUserAccess Policy
@@ -177,6 +179,7 @@ Here are the notes for the topic "IAM - Identity Access Management Continued" in
   1. Allow all actions except specified restricted ones (IAM, Organizations, Account).
   2. Explicitly allow limited actions for IAM, Organizations, and Account management.
 *Example JSON*:
+
 ```json
 {
   "Version": "2012-10-17",
@@ -202,12 +205,14 @@ Here are the notes for the topic "IAM - Identity Access Management Continued" in
   ]
 }
 ```
+
 ## AWSCloudTrail_ReadOnlyAccess Policy
 - **Definition**: Partial User Managed Policy example.
 - **CloudTrail**: Service for monitoring user activity and resource usage.
 - **Policy Permissions**:
   - Allows actions to get, describe, and list CloudTrail data.
 *Example JSON*:
+
 ```json
 {
   "Version": "2012-10-17",
@@ -224,6 +229,7 @@ Here are the notes for the topic "IAM - Identity Access Management Continued" in
   ]
 }
 ```
+
 ## Customer Managed Policy
 - **Definition**: Policies created and managed by AWS account holders.
 - **Example Usage**:
@@ -247,6 +253,7 @@ No, because inline policy has one-to-one mapping. cannot have policy on more tha
 - **Example Use Case**: S3 bucket policies controlling who can `GetObject` from a bucket.
 - **Note**: All resource policies are inline and deleted if the resource is deleted.
 *Example JSON*:
+
 ```json
 {
   "Version": "2012-10-17",
@@ -260,14 +267,16 @@ No, because inline policy has one-to-one mapping. cannot have policy on more tha
   ]
 }
 ```
+
 *Implication of Misuse*: Incorrect configuration of resource-based policies could expose resources to unauthorized access.
-Here are the notes for the topic "IAM - Identity Access Management Continued" in Markdown format based on the provided screenshots.
+
 ## Permissions Boundary
 - **Definition**: Sets the maximum permissions an identity-based policy can grant.
 - **Example**: A permissions boundary attached to an IAM user named Alice.
 - **Effective Permissions**: Intersection between the identity-based policy and permissions boundary defines the actions a user can take.
 *Example JSON*:
 ```json
+
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -281,6 +290,7 @@ Here are the notes for the topic "IAM - Identity Access Management Continued" in
     }
   ]
 }
+
 ```
 ### Permissions Boundary Example
 - **Scenario**:
@@ -316,6 +326,7 @@ The organization’s S3 bucket, `companybucket`, contains separate folders for e
 - **Conditions and Resources in Policy**: Apply `Condition` and `Resource` attributes to target department-specific folders within the bucket.
 ##### Example IAM Policy (JSON)
 JSON policy provides department-specific write access and read access to all users across departments. Each department has an individual policy statement for their folder’s write permissions.
+
 ```json
 {
   "Version": "2012-10-17",
@@ -384,6 +395,7 @@ JSON policy provides department-specific write access and read access to all use
   ]
 }
 ```
+
 ### **Q3:** OSI Security Architecture X.800 and AWS IAM
 #### OSI Security Architecture X.800
 The OSI Security Architecture X.800 standard outlines various security aspects to protect data and system resources, including:
@@ -531,6 +543,7 @@ AWS IAM addresses several components of the X.800 standard:
 
 ### Example: Path-based routing
 - Rule 1: URL pattern `/public/home` routes requests to `PublicWebServer` target group.
+
 ```json
 [
 {
@@ -554,6 +567,7 @@ AWS IAM addresses several components of the X.800 standard:
 }
 ]
 ```
+
 ### Benefits of ELB
 - **Availability & Fault Tolerance**: Ensures web application is accessible and resilient.
 - **Health Check**: Monitors compute resources to ensure responsiveness.
@@ -589,7 +603,7 @@ AWS IAM addresses several components of the X.800 standard:
 - **Public Subnet**: Hosts `Web Server EC2` with Elastic IP for internet access.
 - **Private Subnet**: Hosts `DB Server EC2` without direct internet access.
 
-  ![Pasted image 20241029091225.png](Cloud%20Computing%20%20Exam%20Notes-media/b07c2e3cc9deb8ea943ce78921cd0fcc04b24c84.png "wikilink")
+![Pasted image 20241029091225.png](Cloud%20Computing%20%20Exam%20Notes-media/b07c2e3cc9deb8ea943ce78921cd0fcc04b24c84.png "wikilink")
 
 ### Networking - Elastic Load Balancing Setup
 #### 1. **Set up an ALB (Application Load Balancer)**
@@ -602,7 +616,7 @@ AWS IAM addresses several components of the X.800 standard:
     - **IP Address Type**:
       - **IPv4** or **Dualstack** (supports both IPv4 and IPv6).
 
-    ![Pasted image 20241029091821.png](Cloud%20Computing%20%20Exam%20Notes-media/863198743b1a8f544ee6342174f35d89bf3d142f.png "wikilink")
+![Pasted image 20241029091821.png](Cloud%20Computing%20%20Exam%20Notes-media/863198743b1a8f544ee6342174f35d89bf3d142f.png "wikilink")
   
   - **Network Configuration**:
     - **VPC Selection**: Choose the VPC to route traffic within the specified subnets.
@@ -629,9 +643,9 @@ AWS IAM addresses several components of the X.800 standard:
 - **Configuration**:
   - Select an existing security group or create a new one during setup.
   
-    ![Pasted image 20241029092103.png](Cloud%20Computing%20%20Exam%20Notes-media/a89828cfea65f4d719301eb570dd3ca1cc8c6328.png "wikilink")
+![Pasted image 20241029092103.png](Cloud%20Computing%20%20Exam%20Notes-media/a89828cfea65f4d719301eb570dd3ca1cc8c6328.png "wikilink")
     
-    ![Pasted image 20241029092115.png](Cloud%20Computing%20%20Exam%20Notes-media/6b457ff069bee148fbed894346899547c545eae9.png "wikilink")
+![Pasted image 20241029092115.png](Cloud%20Computing%20%20Exam%20Notes-media/6b457ff069bee148fbed894346899547c545eae9.png "wikilink")
 
 #### 4. **Listeners and Routing**
 - **Listener**: Monitors requests from clients based on a configured **protocol** and **port**.
@@ -641,7 +655,7 @@ AWS IAM addresses several components of the X.800 standard:
     - **Example**: 
     - HTTP request on port 80 directed to `CITS5503-lecture6-TG`.
   
-    ![Pasted image 20241029092134.png](Cloud%20Computing%20%20Exam%20Notes-media/6d1263190916e795b20451dd36dde9df78f52bdd.png "wikilink")
+![Pasted image 20241029092134.png](Cloud%20Computing%20%20Exam%20Notes-media/6d1263190916e795b20451dd36dde9df78f52bdd.png "wikilink")
   
 #### 5. **Create Target Group**
 - **Target Group**: Defines the destination for routed requests.
@@ -650,16 +664,16 @@ AWS IAM addresses several components of the X.800 standard:
     - **IP Addresses**: Targets specified by IP ranges, supports IPv6.
   - **Usage**: Used in conjunction with Auto Scaling for flexibility.
   
-    ![Pasted image 20241029092154.png](Cloud%20Computing%20%20Exam%20Notes-media/d01ed22948a7d2b4986f325d44f3ce75873f32a3.png "wikilink")
+![Pasted image 20241029092154.png](Cloud%20Computing%20%20Exam%20Notes-media/d01ed22948a7d2b4986f325d44f3ce75873f32a3.png "wikilink")
   
-    ![Pasted image 20241029092230.png](Cloud%20Computing%20%20Exam%20Notes-media/3f0d4ff4f02a65f85be5222e3b16cf0b2e5d6388.png "wikilink")
+![Pasted image 20241029092230.png](Cloud%20Computing%20%20Exam%20Notes-media/3f0d4ff4f02a65f85be5222e3b16cf0b2e5d6388.png "wikilink")
   
 #### 6. **Register Targets**
 - **Registering**:
   - After creating a target group, add targets (e.g., EC2 instances) for load balancing.
   - **Health Checks**: Verifies if targets are healthy to receive traffic.
   
-    ![Pasted image 20241029092247.png](Cloud%20Computing%20%20Exam%20Notes-media/a1b462d8e385326ba56f6556e55504d326599b10.png "wikilink")
+![Pasted image 20241029092247.png](Cloud%20Computing%20%20Exam%20Notes-media/a1b462d8e385326ba56f6556e55504d326599b10.png "wikilink")
 
 ### Key Concepts Summary
 - **Elastic Load Balancing (ELB)**:
@@ -679,6 +693,7 @@ AWS IAM addresses several components of the X.800 standard:
    - **Vertical Scaling**: Increasing resources (e.g., CPU/RAM) on a single instance.
   2. **VPC and Internal Scheme Relation**:
    - **Internal ALB** routes within VPC without exposing endpoints to the internet, essential for secure private networks.
+
 ### Networking - Assignment Questions
 #### **Question 1: Reasons for Using ALB with a Django Application**
 - **High fault-tolerance**
@@ -726,7 +741,7 @@ AWS IAM addresses several components of the X.800 standard:
 - **Model Training:** Various algorithms like Support Vector Machine, Random Forest, Neural Networks.
 - **Model Adaptation:** Output can be applied to tasks like question answering, sentiment analysis, information extraction, image captioning, object recognition, instruction following.
 
-  ![Pasted image 20241029093220.png](Cloud%20Computing%20%20Exam%20Notes-media/aa74c9998bd443b4ef60fc5be2ca0d36608466c7.png "wikilink")
+![Pasted image 20241029093220.png](Cloud%20Computing%20%20Exam%20Notes-media/aa74c9998bd443b4ef60fc5be2ca0d36608466c7.png "wikilink")
 
 ### Types of Machine Learning
 1. **Supervised Learning (SL):**
@@ -751,7 +766,7 @@ AWS IAM addresses several components of the X.800 standard:
   - **Output Layer:** Produces the final result.
 - **Connections:** Each node in one layer connects to nodes in the next layer, weighted based on the importance of the input features.
 
-  ![Pasted image 20241029093321.png](Cloud%20Computing%20%20Exam%20Notes-media/bb5f9dc8658d8a3807757b4be7107adcf6b501d7.png "wikilink")
+![Pasted image 20241029093321.png](Cloud%20Computing%20%20Exam%20Notes-media/bb5f9dc8658d8a3807757b4be7107adcf6b501d7.png "wikilink")
 
 ### Perceptron (Single Node Neural Network)
 1. **Linear Transformation:** Calculates a weighted sum of inputs.
@@ -773,7 +788,7 @@ $$
 - **Tanh (Hyperbolic Tangent):** Maps input between -1 and 1, providing better gradients for hidden layers.
 - **ReLU (Rectified Linear Unit):** Outputs zero for negative values and linear for positive values, preventing vanishing gradient problems in deep networks.
 
-  ![Pasted image 20241029093809.png](Cloud%20Computing%20%20Exam%20Notes-media/a1eceee96d3df2f1ad1be61197b0a6eb5c452f2e.png "wikilink")
+![Pasted image 20241029093809.png](Cloud%20Computing%20%20Exam%20Notes-media/a1eceee96d3df2f1ad1be61197b0a6eb5c452f2e.png "wikilink")
 
 # AI - Backpropagation and Performance Metrics
 ## Backpropagation
@@ -782,7 +797,7 @@ $$
   - Parameters (weights \(w\) and biases \(b\)) are adjusted to minimize the cost function.
   - Achieved via **calculus**, computing cost function derivatives.
 
-    ![Pasted image 20241029093958.png](Cloud%20Computing%20%20Exam%20Notes-media/ce73b2008ad1dfad9d9bb3f07a0c884dc6532ba6.png "wikilink")
+![Pasted image 20241029093958.png](Cloud%20Computing%20%20Exam%20Notes-media/ce73b2008ad1dfad9d9bb3f07a0c884dc6532ba6.png "wikilink")
 
   - **Explanation**:
     - Uses optimization algorithms (e.g., **gradient descent**) to adjust parameters iteratively.
@@ -801,7 +816,7 @@ $$
 - **Training Goal**:
   - Minimize **Cost** to improve model accuracy.
   
-    ![Pasted image 20241029094103.png](Cloud%20Computing%20%20Exam%20Notes-media/bf49c827cd85e6195dbb760c02b138a95a8d1bc4.png "wikilink")
+![Pasted image 20241029094103.png](Cloud%20Computing%20%20Exam%20Notes-media/bf49c827cd85e6195dbb760c02b138a95a8d1bc4.png "wikilink")
 
   - **Explanation**:
     - Input **X** is passed through the network to get a predicted output **Y_hat**.
@@ -846,7 +861,7 @@ $$
 - **Cross-Validation Scores**:
   - Assess model performance on multiple data subsets to prevent overfitting.
 
-    ![Pasted image 20241029094830.png](Cloud%20Computing%20%20Exam%20Notes-media/71f2785304ee0eaf6fd97226456c4fb8aea94159.png "wikilink")
+![Pasted image 20241029094830.png](Cloud%20Computing%20%20Exam%20Notes-media/71f2785304ee0eaf6fd97226456c4fb8aea94159.png "wikilink")
 
   - **Explanation**:
     - Dots are actual data points; the line is the learned function.
@@ -951,7 +966,7 @@ $$
 - **Prompt-Based**: Interaction through user input queries.
 - **Pre-trained and Fine-tuned**: Initially trained on large datasets, then fine-tuned for specific tasks.
 #### Image: LLM Characteristics
-  ![Pasted image 20241029102116.png](Cloud%20Computing%20%20Exam%20Notes-media/f3f65967c0717ca255a28ccbfb7c14d6132b7b86.png "wikilink")
+![Pasted image 20241029102116.png](Cloud%20Computing%20%20Exam%20Notes-media/f3f65967c0717ca255a28ccbfb7c14d6132b7b86.png "wikilink")
 
 #### Fine-Tuning
 - **Purpose**: Further trains a pre-trained model on a new, related dataset.
@@ -959,7 +974,7 @@ $$
 - **Effectiveness**: Works best with a large, closely related dataset.
 #### Image: Fine-Tuning Process
 
-  ![Pasted image 20241029102200.png](Cloud%20Computing%20%20Exam%20Notes-media/5859e4203e10ad3ea9fb33593140d93d5b960daa.png "wikilink")
+![Pasted image 20241029102200.png](Cloud%20Computing%20%20Exam%20Notes-media/5859e4203e10ad3ea9fb33593140d93d5b960daa.png "wikilink")
 
   - **Annotations**:
     - *Self-supervised training*: Initial pre-training with large data, resource-intensive.
@@ -983,7 +998,7 @@ $$
   - Common causes: too few parameters, overly simplistic model, insufficient training.
   - **Implication**: Model cannot accurately predict outcomes, even on training data.
   
-    ![Pasted image 20241029102355.png](Cloud%20Computing%20%20Exam%20Notes-media/8f79318cd4347abbb628013f03337962467afdcd.png "wikilink")
+![Pasted image 20241029102355.png](Cloud%20Computing%20%20Exam%20Notes-media/8f79318cd4347abbb628013f03337962467afdcd.png "wikilink")
 
 - **Insufficient Data Preprocessing**
   - Not cleaning, transforming, or handling missing values properly.
@@ -997,7 +1012,7 @@ $$
   - **Example**: Image classifier incorrectly identifies images due to context (e.g., snow in background labeled as "wolf").
   - **Implication**: Can lead to serious errors in critical applications.
   
-    ![Pasted image 20241029102450.png](Cloud%20Computing%20%20Exam%20Notes-media/6336cecce8627b8852f1dfc3d3f170ec5ca51a38.png "wikilink")
+![Pasted image 20241029102450.png](Cloud%20Computing%20%20Exam%20Notes-media/6336cecce8627b8852f1dfc3d3f170ec5ca51a38.png "wikilink")
 
 ### Further Interest Topics
 - **Model Interpretability**
@@ -1011,6 +1026,7 @@ $$
   - Exploration of AI/ML services on other cloud platforms.
   - Examples: Google Cloud AI, Microsoft Azure AI, GitHub Copilot.
   - **Implication**: Broadens scope for model deployment and tool integration.
+
 # AI - Assignment Questions
 ## Types of Machine Learning Models on AWS
 1. **Binary Classification Model**
@@ -1086,6 +1102,7 @@ $$
    - **Inference Types**:
      - Real-Time: Instant predictions.
      - Batch: Large volumes in non-real-time scenarios.
+
 ## Accuracy Measurement for Final Model
 - **Classification Metrics**:
   - **Accuracy**: Percentage of correct predictions.
@@ -1097,26 +1114,26 @@ $$
   - **Mean Squared Error (MSE)**: Penalizes larger errors.
 - **Cross-Validation**:
   - Use in SageMaker notebooks to improve model robustness.
-Here's a condensed Markdown note format based on the images you've provided. The notes are structured with placeholders for images and key ideas in bullet points, as well as implications of each concept.
+
 # Web Application Architecture
 - **Definition**: Organizes software components and their interactions.
 - **Definition**: Layout showing interactions between software components (e.g., frontend and backend)  
 
-  ![Pasted image 20241029103909.png](Cloud%20Computing%20%20Exam%20Notes-media/d67965cd377b34e3c6f31bee3d105d38fa384658.png "wikilink")
+![Pasted image 20241029103909.png](Cloud%20Computing%20%20Exam%20Notes-media/d67965cd377b34e3c6f31bee3d105d38fa384658.png "wikilink")
 
 ## 1-Tier Web Application Architecture
 - **Description**: All software components are on a single machine.
   - **Implications if Misused**: Limits scalability, may slow down with increased user load.
 - **Example**: Basic standalone desktop application.
 
-  ![Pasted image 20241029103955.png](Cloud%20Computing%20%20Exam%20Notes-media/aa3881b5fbe53715b75a62ee3863d315404ed1da.png "wikilink")
+![Pasted image 20241029103955.png](Cloud%20Computing%20%20Exam%20Notes-media/aa3881b5fbe53715b75a62ee3863d315404ed1da.png "wikilink")
 
 ## 2-Tier Web Application Architecture
 - **Description**: Client sends requests directly to a server, which processes and returns the response.
   - **Implications if Misused**: Increased complexity if the system scales; tight coupling between client and database.
 - **Example**: Small business app with a client interface and separate database.
 
-  ![Pasted image 20241029104016.png](Cloud%20Computing%20%20Exam%20Notes-media/d4136496cf9f8ba6aa2c5025d6af4fcf6003f791.png "wikilink")
+![Pasted image 20241029104016.png](Cloud%20Computing%20%20Exam%20Notes-media/d4136496cf9f8ba6aa2c5025d6af4fcf6003f791.png "wikilink")
 
 ## 3-Tier Web Application Architecture
 - **Tiers**:
@@ -1126,7 +1143,7 @@ Here's a condensed Markdown note format based on the images you've provided. The
   - **Implications if Misused**: May lead to inefficient data handling or bottlenecks if improperly managed.
 - **Example**: Web application with a frontend, backend server for logic, and a separate database server.
 
-  ![Pasted image 20241029104043.png](Cloud%20Computing%20%20Exam%20Notes-media/aba9699d0e249a074fd424be93a963e37ca05da3.png "wikilink")
+![Pasted image 20241029104043.png](Cloud%20Computing%20%20Exam%20Notes-media/aba9699d0e249a074fd424be93a963e37ca05da3.png "wikilink")
 
 ## Complex Web Application Architecture
 - **Layers**:
@@ -1148,7 +1165,7 @@ Here's a condensed Markdown note format based on the images you've provided. The
     - DynamoDB stores data.
   - **Implications if Misused**: Can lead to security risks without proper IAM settings, and cost inefficiency with excessive function executions.
 
-    ![Pasted image 20241029104233.png](Cloud%20Computing%20%20Exam%20Notes-media/82485d0c7c176f276d5963f81397c4b4614cbef4.png "wikilink")
+![Pasted image 20241029104233.png](Cloud%20Computing%20%20Exam%20Notes-media/82485d0c7c176f276d5963f81397c4b4614cbef4.png "wikilink")
 
 # Web Application Design Patterns
 - **Definition**: Code-level reusable solution for implementing components and their interactions.
@@ -1162,7 +1179,7 @@ Here's a condensed Markdown note format based on the images you've provided. The
   - View displays student information.
   - Controller manages interactions between Model and View.
 
-    ![Pasted image 20241029105913.png](Cloud%20Computing%20%20Exam%20Notes-media/f9d3aeb9998a4eed787dc3ceb0ee2eaf5d1fdd25.png "wikilink")
+![Pasted image 20241029105913.png](Cloud%20Computing%20%20Exam%20Notes-media/f9d3aeb9998a4eed787dc3ceb0ee2eaf5d1fdd25.png "wikilink")
 
   - **Explanation of Diagram Steps**:
     1. **Request**: End user sends a request.
@@ -1172,6 +1189,7 @@ Here's a condensed Markdown note format based on the images you've provided. The
     5. **Fetch Presentation**: Controller fetches the View for data display.
     6. **Display Data**: View renders data for user presentation.
     7. **Response**: User receives the response.
+
 ## Django Web App Framework
 - **Definition**: An open-source web application framework written in Python.
 - **Customization of MVC**: Django uses Model-View-Template (MVT) instead of MVC.
@@ -1246,6 +1264,7 @@ source cits5503venv/bin/activate
 - **Note**: `/opt/wwc/` path is unsuitable for deploying Django apps as it requires **root privileges**, which the app does not need.
 ## Step 2: Create a Django Project and App
 ### Commands to Install Django and Initialize Project and App
+
 ```bash
 pip install django
 django-admin startproject CITS5503
@@ -1271,6 +1290,7 @@ python manage.py runserver 9000
 ```
 
   - **Example (nginx config)**:
+
 ```nginx
 proxy_pass http://127.0.0.1:8000;
 ```
@@ -1279,53 +1299,61 @@ proxy_pass http://127.0.0.1:8000;
 - **Access URL**: Open a browser and go to `http://localhost:9000`
 - **Admin Interface**: Access at `http://localhost:9000/admin/` for admin tasks.
 
-  ![Pasted image 20241029110607.png](Cloud%20Computing%20%20Exam%20Notes-media/61b70bbf810c273f5a560b0877acf770e9ef761b.png "wikilink")
+![Pasted image 20241029110607.png](Cloud%20Computing%20%20Exam%20Notes-media/61b70bbf810c273f5a560b0877acf770e9ef761b.png "wikilink")
 
 ## Step 5: Create an Admin
 1. **Run Migrations**: Apply initial migrations to set up database tables.
+
 ```bash
 python manage.py migrate  # Applies all migrations (admin, auth, contenttypes, sessions)
 ```
    - **Implications if Misused**: Skipping migrations can lead to missing tables and errors in the admin panel.
 
-      ![Pasted image 20241029110711.png](Cloud%20Computing%20%20Exam%20Notes-media/62d2ce91202c06d127e3e29cd50ec7cafda006b8.png "wikilink")
+![Pasted image 20241029110711.png](Cloud%20Computing%20%20Exam%20Notes-media/62d2ce91202c06d127e3e29cd50ec7cafda006b8.png "wikilink")
 
 2. **Check Database**: Verify database tables with SQLite.
+
 ```bash
 sqlite3 db.sqlite3  # Opens database in SQLite
 .tables  # Lists all tables
 ```
    - **Example Tables**: `auth_user`, `django_session`, `auth_group`
 
-      ![Pasted image 20241029110739.png](Cloud%20Computing%20%20Exam%20Notes-media/13167f16278bddd44fc5a86d8dde60a0a079eadb.png "wikilink")
+![Pasted image 20241029110739.png](Cloud%20Computing%20%20Exam%20Notes-media/13167f16278bddd44fc5a86d8dde60a0a079eadb.png "wikilink")
 
 3. **Create Superuser**: Add an admin user to access Django’s admin interface.
-   ```bash
-   python manage.py createsuperuser  # Prompts for username, email, password
-   ```
+
+```bash
+python manage.py createsuperuser  # Prompts for username, email, password
+```
    - **Implications if Misused**: Not creating an admin limits access to the Django admin panel.
 4. **Restart the Server**: Ensure server reflects any recent changes.
+
 ```bash
 python manage.py runserver
 ```
 
-    ![Pasted image 20241029111000.png](Cloud%20Computing%20%20Exam%20Notes-media/406ae5715493e69b3e9e274027166ef162c92fb4.png "wikilink")
+![Pasted image 20241029111000.png](Cloud%20Computing%20%20Exam%20Notes-media/406ae5715493e69b3e9e274027166ef162c92fb4.png "wikilink")
 
 
 5. **Access Admin Panel**: Go to `http://localhost:9000/admin/` and log in with the superuser credentials.
 
-    ![Pasted image 20241029110924.png](Cloud%20Computing%20%20Exam%20Notes-media/743411adca88d1b2e4bc2b4ae5ceb756aa10ac93.png "wikilink")
+![Pasted image 20241029110924.png](Cloud%20Computing%20%20Exam%20Notes-media/743411adca88d1b2e4bc2b4ae5ceb756aa10ac93.png "wikilink")
 
 # Django Music App - 2. Setup Music App
 ## Step 1: Register the App
 - **Add App to Installed Apps**:
   - Open `CITS5503/settings.py`.
   - Add the following line to `INSTALLED_APPS`:
+
 ```python
 'music.apps.MusicConfig',  # Registers the music app
 ```
+
   - **Implications if Misused**: If not registered, Django will not recognize the app, causing issues in routing and functionality.
+
 ### Code Example
+
 ```python
 INSTALLED_APPS = [
     'django.contrib.admin',  # The admin site
@@ -1337,13 +1365,14 @@ INSTALLED_APPS = [
     'music.apps.MusicConfig',  # New music app
 ]
 ```
+
 ## Step 2: Update the URL Component in the Project
 - **Define App URL**:
   - Open `CITS5503/urls.py`.
   - Import views from the music app.
   - Add URL pattern for the home view.
 
-    ![image](https://github.com/user-attachments/assets/a59fddd7-3881-4f54-8c36-cc9f0ec563b3)
+![image](https://github.com/user-attachments/assets/a59fddd7-3881-4f54-8c36-cc9f0ec563b3)
     
   - **Implications if Misused**: Incorrect URL patterns will prevent users from accessing app views.
 ## Step 3: Update the View Component in the App
@@ -1351,28 +1380,30 @@ INSTALLED_APPS = [
   - Open `music/views.py`.
   - Define a simple view function to display a message.
 
-    ![image](https://github.com/user-attachments/assets/f3f60d07-0ab2-49d9-8277-927c0e3bfd61)
-
-    
+![image](https://github.com/user-attachments/assets/f3f60d07-0ab2-49d9-8277-927c0e3bfd61)
+   
   - **Implications if Misused**: Missing or incorrect views result in "page not found" errors.
 ## Step 4: Access the App
 - **Restart Server**: Restart the server to apply changes.
+
 ```bash
 python manage.py runserver 9000
 ```
 - **Access URL**: Go to `http://localhost:9000` to view the home page message.
 
-  ![Pasted image 20241029111147.png](Cloud%20Computing%20%20Exam%20Notes-media/b049ff79117a5c488512adc6f1e134982597dc54.png "wikilink")
+![Pasted image 20241029111147.png](Cloud%20Computing%20%20Exam%20Notes-media/b049ff79117a5c488512adc6f1e134982597dc54.png "wikilink")
 
 # Django Music App - 3. Enable Rendering Template
 ## Step 1: Create HTML Templates in the Project and App
 1. **Create Template Directories**:
    - Inside the current working directory of the project:
+
 ```bash
 mkdir templates
 mkdir music/templates
 mkdir music/templates/music
 ```
+
    - **Implications if Misused**: Missing directories will prevent Django from finding templates.
 2. **Create HTML Files**:
 
@@ -1380,6 +1411,7 @@ mkdir music/templates/music
 
    - **Implications if Misused**: Missing HTML files result in rendering errors.
 ### Code Example for `templates/home.html`
+
 ![image](https://github.com/user-attachments/assets/8fe04193-1b75-4bf5-ade1-978b48f19ad0)
 
 
@@ -1391,6 +1423,7 @@ mkdir music/templates/music
 
 ![image](https://github.com/user-attachments/assets/1707cd4f-305d-46b8-9c66-e4e8cbea382e)
    - **Implications if Misused**: Incorrect URL configuration can lead to "page not found" errors.
+
 ## Step 3: Create the URL Component in the App
 1. **Define App-Specific URLs**:
    - Create `music/urls.py` and define URL patterns for the app.
@@ -1405,7 +1438,7 @@ mkdir music/templates/music
 1. **Define View Functions**:
    - Inside `music/views.py`, define view functions to render templates.
 
-     ![image](https://github.com/user-attachments/assets/d2dccc4d-a4a0-4c24-ad2b-f730d7c29c21)
+![image](https://github.com/user-attachments/assets/d2dccc4d-a4a0-4c24-ad2b-f730d7c29c21)
 
    - **Implications if Misused**: Incorrect template names or paths will lead to template loading errors.
 
@@ -1413,16 +1446,18 @@ mkdir music/templates/music
 1. **Configure Template Directory**:
    - Open `CITS5503/settings.py`.
    - Update the `DIRS` setting in `TEMPLATES` to include the main templates directory.
-   ```python
-   import os  # added
 
-   TEMPLATES = [
-       {
-           'DIRS': [os.path.join(BASE_DIR, 'templates')],  # added
-           ...
-       }
-   ]
-   ```
+```python
+import os  # added
+
+TEMPLATES = [
+{
+   'DIRS': [os.path.join(BASE_DIR, 'templates')],  # added
+   ...
+}
+]
+```
+
 ## Step 6: Restart the Server and Access the App
 1. **Restart Server**:
    ```bash
@@ -1434,14 +1469,14 @@ mkdir music/templates/music
    - **Music Main Page**: `http://localhost:9000/music/`
    - **Artist Page**: `http://localhost:9000/music/artist/`
 
-      ![Pasted image 20241029111607.png](Cloud%20Computing%20%20Exam%20Notes-media/26ef314e7c22a8e8e6f9a6c422d7e1415ec15001.png "wikilink")
+![Pasted image 20241029111607.png](Cloud%20Computing%20%20Exam%20Notes-media/26ef314e7c22a8e8e6f9a6c422d7e1415ec15001.png "wikilink")
 
 # Django Music App - 4. Rendered Templates with Retrieved Data
 ### Step 1: Add a Model in the App
 - **Location**: `music/models.py`
 - **Code**:
 
-  ![image](https://github.com/user-attachments/assets/41580edc-1beb-4717-9526-c9c1cc0e02c0)
+![image](https://github.com/user-attachments/assets/41580edc-1beb-4717-9526-c9c1cc0e02c0)
 
 
 - **Implication**: Defining models is essential as it provides the structure for database tables.
@@ -1456,21 +1491,22 @@ mkdir music/templates/music
 ### Step 3: Make and Apply Database Migrations
 - **Commands**:
 
-  ```bash
-  python manage.py makemigrations  # creates migration files
-  python manage.py migrate         # applies migrations to the database
-  ```
+```bash
+python manage.py makemigrations  # creates migration files
+python manage.py migrate         # applies migrations to the database
+```
   
 - **Output**: Confirms creation of `music_artist` table in the database.
 - **Implication**: Skipping migrations will prevent the model from being reflected in the database.
 
-  ![Pasted image 20241029111909.png](Cloud%20Computing%20%20Exam%20Notes-media/2f96348ebcedf8bfecb5ab871521be361eb4226a.png "wikilink")
+![Pasted image 20241029111909.png](Cloud%20Computing%20%20Exam%20Notes-media/2f96348ebcedf8bfecb5ab871521be361eb4226a.png "wikilink")
 
 ### Step 4: Restart the Server and Access the Admin Interface
 - **Action**: Open the Django admin interface at `http://localhost:9000/admin/`.
 - **View**: Artists section is visible in the admin interface.
 - **Implication**: Allows adding and managing `Artist` entries directly from the admin interface.
-  ![Pasted image 20241029111932.png](Cloud%20Computing%20%20Exam%20Notes-media/eb85108e5294fd4f6775a1a624b4d09110e885b7.png "wikilink")
+
+![Pasted image 20241029111932.png](Cloud%20Computing%20%20Exam%20Notes-media/eb85108e5294fd4f6775a1a624b4d09110e885b7.png "wikilink")
 
 ### Step 5: Populate the Artist Table
 - **Action**: Use the admin interface to add artist entries, e.g., "Jerry" and "Tom."
@@ -1481,7 +1517,7 @@ def __str__(self):
 return self.name  # displays the artist name in list views
 ```
 
-  ![Pasted image 20241029111950.png](Cloud%20Computing%20%20Exam%20Notes-media/f72f690cfb88c4ff1f8bb8f3c6faf66ccdff49f9.png "wikilink")
+![Pasted image 20241029111950.png](Cloud%20Computing%20%20Exam%20Notes-media/f72f690cfb88c4ff1f8bb8f3c6faf66ccdff49f9.png "wikilink")
 
 ### Step 6: Update the View Component in the App
 - **Location**: `music/views.py`
@@ -1493,6 +1529,7 @@ return self.name  # displays the artist name in list views
 - **Implication**: Missing data retrieval or incorrect context keys will lead to display errors.
 ### Step 7: Update `music/templates/music/artist.html`
 - **Code**:
+
 ![image](https://github.com/user-attachments/assets/0a77dc84-fadc-4bd4-bef4-14b466cf3c97)
 
 - **Explanation**: Loops over `artist_list` to display each artist's name and song.
@@ -1502,7 +1539,7 @@ return self.name  # displays the artist name in list views
 - **Output**: Displays a list of artists and their songs.
 
 
-  ![Pasted image 20241029112030.png](Cloud%20Computing%20%20Exam%20Notes-media/67a8985c12a21ab16923875f04d2998e702d0541.png "wikilink")
+![Pasted image 20241029112030.png](Cloud%20Computing%20%20Exam%20Notes-media/67a8985c12a21ab16923875f04d2998e702d0541.png "wikilink")
 
 ### Question: What if 'title' in Context is Replaced by 'titlectx'?
 - **Original Code**:
@@ -1558,7 +1595,7 @@ This approach improves security by enforcing strict access control and separatio
 # DevOps Overview
 - **DevOps**: Combination of cultural philosophies, practices, and tools to deliver applications faster than traditional software development.
 
-  ![Pasted image 20241029113824.png](Cloud%20Computing%20%20Exam%20Notes-media/18e1f74149a697f5a948a545dc63df17a534c42c.png "wikilink")
+![Pasted image 20241029113824.png](Cloud%20Computing%20%20Exam%20Notes-media/18e1f74149a697f5a948a545dc63df17a534c42c.png "wikilink")
 
 ### DevOps Best Practices
 1. **Microservices**: 
@@ -1582,7 +1619,7 @@ This approach improves security by enforcing strict access control and separatio
    - Extends CD by automatically deploying to production upon passing tests.
    - **Benefit**: Enables faster updates for users.
 
-      ![Pasted image 20241029114458.png](Cloud%20Computing%20%20Exam%20Notes-media/750f7587964cfe6c41effef476aed5b7d50efe8d.png "wikilink")
+![Pasted image 20241029114458.png](Cloud%20Computing%20%20Exam%20Notes-media/750f7587964cfe6c41effef476aed5b7d50efe8d.png "wikilink")
 
 ### The Software/Application Release Process
 1. **Source Control**:
@@ -1596,7 +1633,7 @@ This approach improves security by enforcing strict access control and separatio
 4. **Deploy to Production Environment**:
    - Final deployment where the application is accessible to end-users.
 
-      ![Pasted image 20241029114344.png](Cloud%20Computing%20%20Exam%20Notes-media/54b236043116122ffc5de98ed31d1c229db7025f.png "wikilink")
+![Pasted image 20241029114344.png](Cloud%20Computing%20%20Exam%20Notes-media/54b236043116122ffc5de98ed31d1c229db7025f.png "wikilink")
 
 # Fabric and SSH
 ## Fabric: Automate Tasks in DevOps
@@ -1609,7 +1646,7 @@ This approach improves security by enforcing strict access control and separatio
 - 
 - **Question:** How is OpenSSH used for user/client authentication?
 
-  ![Pasted image 20241029120336.png](Cloud%20Computing%20%20Exam%20Notes-media/eef9d971522e794b656a8fcfa562d7dc627391eb.png "wikilink")
+![Pasted image 20241029120336.png](Cloud%20Computing%20%20Exam%20Notes-media/eef9d971522e794b656a8fcfa562d7dc627391eb.png "wikilink")
 
 - **Explanation of Diagram**:
   1. Client initiates SSH connection.
@@ -1618,6 +1655,7 @@ This approach improves security by enforcing strict access control and separatio
   4. Client sends the encrypted message back to the server.
   5. Server decrypts using the client's public key.
   6. If messages match, authentication succeeds.
+
 ## Adding SSH Public Key to GitHub
 1. **Check for Existing OpenSSH Key Pairs**:
 
@@ -1706,29 +1744,33 @@ c = Connection('myFabric')
 - **su** (Switch User): Allows switching to another user account with a password.
  
   - **Example of `sudo`**:
+
 ```bash
 sudo vim /etc/sudoers
 ```
+
   - **Example of `su`**:
+
 ```bash
 su root
 ```
+
 ## `su` vs. `su -`
 - **su**: Does not change the working directory.
 - **su -**: Changes to the target user’s home directory.
 ## Enable Server/Host Authentication in SSH Config
 - Update configuration to enforce host authentication:
 
-  ```
-  Host myFabric
-  Hostname 3.26.156.206
-  User ec2-user
-  StrictHostKeyChecking yes
-  PasswordAuthentication no
-  IdentityFile ~/.ssh/myFabricKey.pem
-  ```
+```
+Host myFabric
+Hostname 3.26.156.206
+User ec2-user
+StrictHostKeyChecking yes
+PasswordAuthentication no
+IdentityFile ~/.ssh/myFabricKey.pem
+```
   
-  ![Pasted image 20241029121037.png](Cloud%20Computing%20%20Exam%20Notes-media/4f361288fff6aeefa1e845f057bb590232e17820.png "wikilink")
+![Pasted image 20241029121037.png](Cloud%20Computing%20%20Exam%20Notes-media/4f361288fff6aeefa1e845f057bb590232e17820.png "wikilink")
 
 ## fabfile.py
 - **Purpose**: A Python script with tasks for Fabric.
@@ -1856,6 +1898,7 @@ Example:
 - **Log Stream**: Sequence of log events from the same source.
 - **Log Group**: Group of log streams with shared monitoring settings.
 - **Policy JSON**:
+
 ```json
 {
 "Version": "2012-10-17",
@@ -1879,6 +1922,7 @@ Example:
 ]
 }
 ```
+
 #### Step 3: Create an IAM Role
 - **Description**: Allow Lambda to assume a role to access S3 resources.
 - **Types of Trusted Entities**:
@@ -1904,6 +1948,7 @@ Example:
 ![Pasted image 20241029121954.png](Cloud%20Computing%20%20Exam%20Notes-media/b02cfa07900a855db291e8d62cef35fee582d62d.png "wikilink")
 
 - **Step 4.2**: Create Lambda function code to process S3 events.
+
 ```python
 import json
 import urllib.parse
