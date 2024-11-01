@@ -1184,6 +1184,7 @@ Here's a condensed Markdown note format based on the images you've provided. The
   - **Example**: `/user/1` maps to `UserView(id=1)`.
   - **Implications if Misused**: Incorrect URL mappings can lead to errors or inaccessible pages.
 ### Code Example: `urls.py`
+{% raw %}
 ```python
 from django.urls import path
 from music import views
@@ -1192,6 +1193,8 @@ urlpatterns = [
     path('', views.home, name='home'),  # Home page URL
 ]
 ```
+{% endraw %}
+
 ## View Component
 - **Function**: Uses resolved arguments to interact with templates and models.
 - **Implications if Misused**: Complex views can slow down response time.
@@ -1273,9 +1276,12 @@ python manage.py runserver  # Starts server on default port 8000
   python manage.py runserver 9000
   ```
   - **Example (nginx config)**:
+  {% raw %}
     ```nginx
     proxy_pass http://127.0.0.1:8000;
     ```
+  {% endraw %}
+  
 ## Step 4: Access the Server
 - **Access URL**: Open a browser and go to `http://localhost:9000`
 - **Admin Interface**: Access at `http://localhost:9000/admin/` for admin tasks.
@@ -1343,6 +1349,7 @@ INSTALLED_APPS = [
   - Open `CITS5503/urls.py`.
   - Import views from the music app.
   - Add URL pattern for the home view.
+    {% raw %}
     ```python
     from django.urls import path
     from music import views  # added
@@ -1352,11 +1359,14 @@ INSTALLED_APPS = [
         path('admin/', admin.site.urls),
     ]
     ```
+    {% endraw %}
+    
   - **Implications if Misused**: Incorrect URL patterns will prevent users from accessing app views.
 ## Step 3: Update the View Component in the App
 - **Create Home View**:
   - Open `music/views.py`.
   - Define a simple view function to display a message.
+    {% raw %}
     ```python
     from django.shortcuts import render
     from django.http import HttpResponse  # added
@@ -1364,6 +1374,8 @@ INSTALLED_APPS = [
     def home(request):
         return HttpResponse('This is the home page.')  # Displays text on home page
     ```
+    {% endraw %}
+    
   - **Implications if Misused**: Missing or incorrect views result in "page not found" errors.
 ## Step 4: Access the App
 - **Restart Server**: Restart the server to apply changes.
@@ -1385,11 +1397,14 @@ INSTALLED_APPS = [
      ```
    - **Implications if Misused**: Missing directories will prevent Django from finding templates.
 2. **Create HTML Files**:
+   {% raw %}
    ```bash
    touch templates/home.html
    touch music/templates/music/main.html
    touch music/templates/music/artist.html
    ```
+   {% endraw %}
+   
    - **Implications if Misused**: Missing HTML files result in rendering errors.
 ### Code Example for `templates/home.html`
 ![image](https://github.com/user-attachments/assets/8fe04193-1b75-4bf5-ade1-978b48f19ad0)
