@@ -531,27 +531,29 @@ AWS IAM addresses several components of the X.800 standard:
 
 ### Example: Path-based routing
 - Rule 1: URL pattern `/public/home` routes requests to `PublicWebServer` target group.
-  ```json
-  [
-    {
-      "Field": "path-pattern",
-      "PathPatternConfig": {
-        "Values": ["/public/*"]
-      }
-    }
-  ]
-  ```
+```json
+[
+{
+"Field": "path-pattern",
+"PathPatternConfig": {
+"Values": ["/public/*"]
+}
+}
+]
+```
+
 - Rule 2: URL pattern `/admin/settings` routes requests to `AdminConsole` target group.
-  ```json
-  [
-    {
-      "Field": "path-pattern",
-      "PathPatternConfig": {
-        "Values": ["/admin/*"]
-      }
-    }
-  ]
-  ```
+
+```json
+[
+{
+"Field": "path-pattern",
+"PathPatternConfig": {
+"Values": ["/admin/*"]
+}
+}
+]
+```
 ### Benefits of ELB
 - **Availability & Fault Tolerance**: Ensures web application is accessible and resilient.
 - **Health Check**: Monitors compute resources to ensure responsiveness.
@@ -1513,6 +1515,7 @@ return self.name  # displays the artist name in list views
 ![image](https://github.com/user-attachments/assets/f25e0bee-35c7-44a7-b7ff-e67f5d9fc5df)
 
 - **Template Change**:
+
 ![image](https://github.com/user-attachments/assets/26b71415-8d93-49ce-95fc-339de75e66e2)
 
 - **Implication**: Failure to match context keys between view and template results in missing data on the page.
@@ -1935,6 +1938,7 @@ except Exception as e:
 8. encoding='utf-8': specifies the character encoding to be used when decoding the object key.
 
 **Step 4.3: Deploy the Lambda Function**
+
 ![Pasted image 20241029122333.png](Cloud%20Computing%20%20Exam%20Notes-media/f89c1bcee9d35f35e971fe28f7e0038f8108eb30.png "wikilink")
 
 #### Step 5: Add S3 Trigger to Lambda Function
