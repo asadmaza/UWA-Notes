@@ -1406,16 +1406,9 @@ INSTALLED_APPS = [
 ## Step 3: Create the URL Component in the App
 1. **Define App-Specific URLs**:
    - Create `music/urls.py` and define URL patterns for the app.
-   ```python
-   from django.urls import path
-   from . import views
 
-   app_name = 'music'
-   urlpatterns = [
-       path('', views.main, name='main'),  # Music main page
-       path('artist/', views.artist, name='artist'),  # Artist page
-   ]
-   ```
+![image](https://github.com/user-attachments/assets/b5a48a8e-1dec-4e6b-9b70-f48668e158cf)
+
    - **Question**: What kind of URL requests will be processed by the first URL pattern?
      - **Answer**: Requests to the `/music/` path will be processed, displaying the main page of the music app.
 
