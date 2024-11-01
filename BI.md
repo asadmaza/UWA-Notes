@@ -1,3 +1,10 @@
+---
+layout: default
+---
+
+**Generated using AI 🤖, so please use it at your own risk. Commercial use is prohibited 🚫, please attribute or link my work to others, I hope you find it useful 🫡.
+[README](index.md).**
+
 # Introduction to Business Intelligence
 ## Business Intelligence Topic
 ### Business Intelligence - Definition

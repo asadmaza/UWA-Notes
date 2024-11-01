@@ -1,4 +1,5 @@
 title: "UWA Notes"
 description: "Page for Unit Material Notes"
-theme: jekyll-theme-cayman  # You can choose other themes as well
+theme: jekyll-theme-cayman
 markdown: kramdown
+highlighter: rouge  # Code highlighting with kramdown
